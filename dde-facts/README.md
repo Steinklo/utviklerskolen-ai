@@ -1,83 +1,88 @@
-# DDE-facts
+# GitHub Copilot Workshop
 
-Fun facts about Norwegian rock band **D.D.E.** - a learning project for Utviklerskolen Kristiansand.
+Lær å bruke GitHub Copilot til å bygge en hel app - fra instruksjoner til kjørende kode.
 
-## Tech Stack
+**Prosjekt:** DDE-facts - morsomme fakta om bandet D.D.E.
 
-- **Backend:** C# ASP.NET Core Minimal API (.NET 9+)
-- **Frontend:** React + TypeScript + Vite + Tailwind + TanStack Query
-- **Tests:** xUnit (backend), Vitest (frontend)
+---
 
-## Getting Started
+## Workshop-oversikt
 
-### Prerequisites
-- [.NET 9 SDK](https://dotnet.microsoft.com/download)
-- [Node.js 20+](https://nodejs.org/)
+| Del | Tema | Tid | Hva du gjør |
+|-----|------|-----|-------------|
+| 0 | **Generer appen** | 15 min | Du genererer backend + frontend med Copilot |
+| 1 | **Custom Instructions** | 20 min | Legg til regler, se effekten |
+| 2 | **Agents, Skills, Agent Mode, Hooks** | 30 min | Lag agenter, prøv agent mode, sett opp hooks |
+| 3 | **Copilot CLI** | 15 min | Bruk Copilot i terminalen |
+| 4 | **Utfordring** | 15 min | Restyle hele appen |
 
-### Run Backend
+**Total tid:** ca. 1 time 45 min
+
+---
+
+## Kom i gang
+
+### 1. Klon prosjektet
+
 ```bash
-cd backend
-dotnet restore
-dotnet run --project src/DdeFacts.Api
-# API: http://localhost:5000
+git clone https://github.com/Steinklo/utviklerskolen-ai.git
+cd utviklerskolen-ai/dde-facts
+code .
 ```
 
-### Run Frontend
-```bash
-cd frontend
-npm install
-npm run dev
-# App: http://localhost:5173
-```
+### 2. Sjekk forutsetninger
 
-### Run Tests
-```bash
-cd backend && dotnet test
-cd frontend && npm test
-```
+- [ ] VS Code med GitHub Copilot
+- [ ] .NET 9 SDK
+- [ ] Node.js 20+
+- [ ] Git (med Git Bash på Windows)
 
-## Project Structure
+### 3. Start workshopen
+
+**[Del 0: Generer appen](docs/00-live-demo.md)**
+
+---
+
+## Læringsmål
+
+Etter workshopen kan du:
+
+1. Skrive instruksjoner som styrer Copilot
+2. Lage egne agenter for spesialiserte oppgaver
+3. Bruke Agent Mode for større endringer
+4. Sette opp hooks for automatisering
+5. Bruke Copilot CLI i terminalen
+6. Restyler en hel app ved å endre instruksjoner
+
+---
+
+## Prosjektstruktur
 
 ```
 dde-facts/
-├── backend/src/DdeFacts.Api/
-│   ├── Program.cs
-│   ├── Models/
-│   ├── DTOs/
-│   └── Services/
-├── frontend/src/
-│   ├── components/
-│   ├── pages/
-│   ├── hooks/
-│   └── types/
-└── .claude/          # Claude Code config
+├── docs/                           # Workshop-dokumenter
+│   ├── 00-live-demo.md             # Del 0: Generer appen
+│   ├── 01-custom-instructions.md   # Del 1: Instruksjoner
+│   ├── 02-agents-and-skills.md     # Del 2: Agents, Skills, Mode, Hooks
+│   ├── 03-copilot-cli.md           # Del 3: CLI
+│   └── 04-final-challenge.md       # Del 4: Utfordring
+├── .github/
+│   ├── copilot-instructions.md     # Prosjekt-instruksjoner
+│   ├── agents/                     # Custom Agents
+│   ├── skills/                     # Agent Skills
+│   └── hooks/                      # Git hooks (lages i øvelse)
+├── backend/                        # Genereres i Del 0
+└── frontend/                       # Genereres i Del 0
 ```
 
-## API
+---
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/api/facts` | All facts |
-| GET | `/api/facts/{id}` | Single fact |
+## Ressurser
 
-**Response:**
-```json
-{
-  "facts": [{
-    "id": 1,
-    "title": "Fra After Dark til D.D.E.",
-    "description": "Bandet startet som After Dark i 1984...",
-    "year": 1984,
-    "category": "History"
-  }]
-}
-```
+- [GitHub Copilot Docs](https://docs.github.com/en/copilot)
+- [Custom Instructions](https://docs.github.com/en/copilot/customizing-copilot/adding-repository-custom-instructions-for-github-copilot)
+- [Copilot CLI](https://docs.github.com/en/copilot/using-github-copilot/using-github-copilot-in-the-command-line)
 
-## AI-Assisted Development
+---
 
-### Claude Code
-See [CLAUDE.md](CLAUDE.md) for agents, skills, commands, and hooks.
-
-### GitHub Copilot
-- `backend/.copilot/instructions.md` - C# patterns
-- `frontend/.copilot/instructions.md` - React/TS patterns
+Made for Utviklerskolen Kristiansand
