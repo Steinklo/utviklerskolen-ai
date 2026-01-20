@@ -1,6 +1,6 @@
 # Nivå 1: Custom Instructions
 
-Lær å skrive instruksjoner som styrer hva Copilot genererer.
+Lær hvordan instruksjonsfiler styrer hva Copilot genererer.
 
 ---
 
@@ -9,7 +9,7 @@ Lær å skrive instruksjoner som styrer hva Copilot genererer.
 En markdown-fil som forteller Copilot om prosjektet ditt:
 - Teknologier og rammeverk
 - Kodekonvensjoner
-- Prosjektstruktur
+- Datamodeller
 
 **Filplassering:** `.github/copilot-instructions.md`
 
@@ -17,7 +17,7 @@ En markdown-fil som forteller Copilot om prosjektet ditt:
 
 ## Øvelse 1: Legg til en ny kategori (10 min)
 
-D.D.E.-appen har 4 kategorier: History, Hits, Live, Trivia.
+Appen har 4 kategorier: History, Hits, Live, Trivia.
 
 **Din oppgave:** Legg til en ny kategori "Members" for fakta om bandmedlemmene.
 
@@ -36,17 +36,14 @@ category: 'History' | 'Hits' | 'Live' | 'Trivia' | 'Members';
 ### Steg 3: Test med Copilot
 
 1. Åpne Copilot Chat (`Ctrl+Shift+I`)
-2. Skriv:
-   ```
-   @workspace Create a new Fact about Bjarne Brøndbo with category Members
-   ```
+2. Skriv: `@workspace Create a new Fact about Bjarne Brøndbo with category Members`
 3. Sjekk at Copilot bruker den nye kategorien
 
 ---
 
 ## Øvelse 2: Legg til en logging-regel (10 min)
 
-**Din oppgave:** Legg til regler for hvordan logging skal gjøres i prosjektet.
+**Din oppgave:** Definer hvordan logging skal gjøres i prosjektet.
 
 ### Steg 1: Åpne instruksjonsfilen
 
@@ -54,20 +51,21 @@ category: 'History' | 'Hits' | 'Live' | 'Trivia' | 'Members';
 
 ### Steg 2: Legg til under "Rules"
 
-Legg til en ny seksjon "Logging" med disse reglene:
+Legg til en ny seksjon:
+
+```markdown
+## Logging
 - Use ILogger for all logging
 - Log at Info level for successful operations
 - Log at Warning level for handled errors
 - Log at Error level for exceptions
 - Always include context (e.g., fact ID, operation name)
+```
 
 ### Steg 3: Test regelen
 
 1. Åpne Copilot Chat
-2. Skriv:
-   ```
-   @workspace Create a FactService method that gets a fact by ID with proper logging
-   ```
+2. Skriv: `@workspace Create a FactService method that gets a fact by ID with proper logging`
 3. Sjekk at Copilot:
    - Bruker ILogger
    - Logger på riktig nivå
@@ -75,108 +73,35 @@ Legg til en ny seksjon "Logging" med disse reglene:
 
 ---
 
-## Øvelse 3: Legg til en Swagger-regel (10 min)
+## Eksperiment: Hva skjer når du fjerner regler? (5 min)
 
-**Din oppgave:** Legg til en regel om at alle endpoints skal ha Swagger-dokumentasjon.
+Nå skal du **bryte** instruksjonene for å forstå hvorfor de er viktige.
 
-### Steg 1: Åpne backend-instruksjonene
+### Test 1: Fjern en regel
 
-Åpne `backend/.copilot/instructions.md`
+1. Åpne `.github/copilot-instructions.md`
+2. Kommenter ut logging-regelen du nettopp la til
+3. Be Copilot generere samme kode igjen
+4. **Observér:** Hva er annerledes?
 
-### Steg 2: Legg til en ny DO-regel
+### Test 2: Endre datamodellen
 
-Under "Key Patterns", legg til en ny seksjon:
+1. Fjern `year` fra Data Contract
+2. Be Copilot lage et nytt fact
+3. **Observér:** Inkluderer den `year` fortsatt?
 
-**Tittel:** `### ✅ DO: Add Swagger documentation`
+### Rydd opp
 
-**Innhold:** Et kodeeksempel som viser `.WithName()`, `.WithDescription()` og `.Produces<T>()` på et endpoint.
-
-Se på de eksisterende DO/DON'T mønstrene i filen for inspirasjon.
-
-### Steg 3: Test regelen
-
-1. Åpne Copilot Chat
-2. Skriv:
-   ```
-   @workspace Create a new endpoint GET /api/facts/random that returns a random fact
-   ```
-3. Sjekk at Copilot inkluderer Swagger-metodene
-
----
-
-## Øvelse 4: Legg til error handling-regler (10 min)
-
-**Din oppgave:** Definer hvordan feil skal håndteres i frontend.
-
-### Steg 1: Åpne frontend-instruksjonene
-
-Åpne `frontend/.copilot/instructions.md`
-
-### Steg 2: Legg til en Error Handling seksjon
-
-Legg til to nye mønstre:
-
-**DO:** Vis brukervennlige feilmeldinger på norsk med Tailwind-styling (rød bakgrunn, tydelig tekst).
-
-**DON'T:** Vis tekniske feilmeldinger direkte til brukeren (som `error.message`).
-
-### Steg 3: Test regelen
-
-1. Åpne Copilot Chat
-2. Skriv:
-   ```
-   @workspace Create an error component for when facts fail to load
-   ```
-3. Sjekk at Copilot lager bruker-vennlige feilmeldinger
-
----
-
-## Øvelse 5: Lag instruksjoner for ditt eget prosjekt (bonus)
-
-**Din oppgave:** Lag en instruksjonsfil for et prosjekt du jobber med.
-
-### Steg 1: Opprett filen
-
-Lag en ny fil `my-project-instructions.md` (hvor som helst).
-
-### Steg 2: Fyll inn malen
-
-```markdown
-# [Prosjektnavn]
-
-## Tech Stack
-- Backend: [teknologi]
-- Frontend: [teknologi]
-- Database: [teknologi]
-
-## Data Models
-[Beskriv hovedmodellene]
-
-## Patterns
-
-### ✅ DO: [Navn på mønster]
-[Beskriv hva som er bra praksis]
-
-### ❌ DON'T: [Navn på anti-mønster]
-[Beskriv hva som skal unngås]
-
-## Rules
-- [Regel 1]
-- [Regel 2]
-```
-
-### Steg 3: Test med Copilot
-
-Åpne filen i VS Code og bruk Copilot Chat til å generere kode. Følger den instruksjonene?
+Fjern kommentarene og gjenopprett instruksjonene før du går videre.
 
 ---
 
 ## Nøkkelpunkter
 
-✅ Instruksjoner styrer Copilots forslag
-✅ Vær spesifikk med DO/DON'T eksempler
-✅ Test hver regel du legger til
-✅ Iterer basert på resultatene
+- Instruksjoner styrer Copilots forslag
+- Vær spesifikk - Copilot gjør det du sier
+- Test endringer umiddelbart
+- Fjerner du en regel, forsvinner atferden
 
 ---
 

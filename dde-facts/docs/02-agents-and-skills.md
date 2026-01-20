@@ -1,31 +1,32 @@
 # Nivå 2: Agents og Skills
 
-Lag spesialiserte AI-agenter og kunnskapspakker.
+Lag spesialiserte AI-agenter med egen kunnskap.
 
 ---
 
-## Custom Agents
+## Hva er forskjellen?
 
-Agenter er spesialiserte versjoner av Copilot med egne instruksjoner.
-
-**Filplassering:** `.github/agents/NAVN.agent.md`
+| Type | Hva det er | Filplassering |
+|------|------------|---------------|
+| **Agent** | En Copilot med spesifikke instruksjoner | `.github/agents/NAVN.agent.md` |
+| **Skill** | Kunnskap agenten kan bruke | `.github/skills/NAVN/SKILL.md` |
 
 ---
 
-## Øvelse 1: Lag en documentation-agent (10 min)
+## Øvelse 1: Lag en dokumentasjons-agent (10 min)
 
-**Din oppgave:** Lag en agent som skriver god dokumentasjon på norsk.
+**Din oppgave:** Lag en agent som skriver dokumentasjon på norsk.
 
-### Steg 1: Opprett agentfilen
+### Steg 1: Opprett filen
 
-Opprett filen `.github/agents/documentation.agent.md`
+Opprett `.github/agents/docs.agent.md`
 
 ### Steg 2: Legg til innhold
 
 ```markdown
 ---
-name: documentation
-description: Writes clear documentation for code in Norwegian
+name: docs
+description: Writes documentation in Norwegian
 tools: githubRepo
 ---
 
@@ -37,194 +38,92 @@ Du skriver klar og tydelig dokumentasjon på norsk.
 1. Forklar hva koden gjør i enkle ord
 2. Gi praktiske eksempler
 3. List opp parametere og returverdier
-4. Hold det kort og begynner-vennlig
+4. Bruk norske termer der det passer
 ```
 
 ### Steg 3: Test agenten
 
 1. Åpne Copilot Chat (`Ctrl+Shift+I`)
-2. Skriv: `@documentation dokumenter Fact-modellen`
-3. Vurder: Er dokumentasjonen god? På norsk?
-
-### Steg 4: Forbedre agenten
-
-Legg til flere regler basert på hva som manglet. Test igjen.
+2. Skriv: `@docs dokumenter FactService klassen`
+3. **Sjekk:** Er dokumentasjonen på norsk? Er den forståelig?
 
 ---
 
-## Øvelse 2: Lag en test-generator agent (10 min)
+## Øvelse 2: Utvid D.D.E.-kunnskapen (10 min)
 
-**Din oppgave:** Lag en agent som genererer enhetstester.
+Prosjektet har en skill med D.D.E.-fakta. Du skal utvide den.
 
-### Steg 1: Opprett agentfilen
-
-Opprett filen `.github/agents/test-generator.agent.md`
-
-### Steg 2: Legg til innhold
-
-```markdown
----
-name: test-generator
-description: Generates unit tests for code
-tools: githubRepo, terminal
----
-
-# Test Generator Agent
-
-Du genererer grundige enhetstester.
-
-## For C# (xUnit)
-- Bruk Arrange-Act-Assert mønsteret
-- Bruk FluentAssertions
-- Test både happy path og edge cases
-- Navngi tester: MethodName_Scenario_ExpectedResult
-
-## For TypeScript (Vitest)
-- Bruk describe/it blokker
-- Mock eksterne avhengigheter
-- Test komponent-rendering og interaksjoner
-```
-
-### Steg 3: Test agenten
-
-1. Åpne Copilot Chat
-2. Skriv: `@test-generator lag tester for en FactService som returnerer fakta`
-3. Sjekk at testene følger mønstrene du definerte
-
----
-
-## Øvelse 3: Legg til ny kunnskap i dde-expert skill (10 min)
-
-**Din oppgave:** Utvid D.D.E.-kunnskapen med konserter.
+**Din oppgave:** Legg til konserter og musikalsk stil.
 
 ### Steg 1: Åpne skill-filen
 
 Åpne `.github/skills/dde-expert/SKILL.md`
 
-### Steg 2: Legg til ny seksjon på slutten
+### Steg 2: Legg til ny kunnskap på slutten
 
 ```markdown
-## Kjente konserter
-- **Russetreff**: Spiller årlig for russen over hele landet
-- **Kilden Kristiansand**: Flere utsolgte konserter
-- **Namsos**: Hjembyen, alltid spesielle konserter
-- **Røros**: Kjent for vinterkonserter
+## Musikalsk stil
+- Blanding av rock, trøndersk folkemusikk og danseband
+- Kjennetegnes av Bjarne Brøndbos karakteristiske vokal
+- Ofte humoristiske tekster om hverdagslige temaer
+- Bruker trekkspill og gitar som hovedinstrumenter
 
-## Konsert-fakta
-- Åpner ofte med intro-musikk før de kommer på scenen
-- Bjarne snakker alltid med publikum mellom låtene
-- "Vinsjan på kaia" er alltid siste låt før ekstranummer
+## Kjente konserter
+- Spiller årlig på russetreff over hele landet
+- Utsolgte konserter på Rockefeller i Oslo
+- Legendariske opptredener på Namsos byfest
 ```
 
 ### Steg 3: Test kunnskapen
 
 1. Åpne Copilot Chat
-2. Spør: `Hvor har D.D.E. spilt konserter?`
-3. Spør: `Hvilken låt avslutter de alltid med?`
-4. Sjekk at Copilot bruker den nye informasjonen
+2. Spør: `Hva kjennetegner D.D.E. sin musikalske stil?`
+3. Spør: `Hvor har D.D.E. spilt konserter?`
+4. **Sjekk:** Bruker Copilot informasjonen du la til?
 
 ---
 
-## Øvelse 4: Lag en security-review skill (10 min)
+## Eksperiment: Lag din egen agent (5 min)
 
-**Din oppgave:** Lag en skill med sikkerhetssjekkliste.
+Nå skal du lage en agent fra scratch for noe **du** vil ha.
 
-### Steg 1: Opprett skill-mappen
+### Idéer
 
-Opprett mappen `.github/skills/security-review/`
+- **`@explain`** - Forklarer kode for nybegynnere
+- **`@review`** - Gir feedback på kode
+- **`@test`** - Foreslår tester for kode
 
-### Steg 2: Opprett SKILL.md
-
-Opprett filen `.github/skills/security-review/SKILL.md`:
+### Mal
 
 ```markdown
 ---
-name: security-review
-description: Security checklist for code review
----
-
-# Security Review Checklist
-
-## API Security
-- [ ] Input validation on all endpoints
-- [ ] No sensitive data in URLs
-- [ ] Rate limiting configured
-- [ ] CORS properly restricted
-
-## Data Security
-- [ ] No secrets in code
-- [ ] Passwords hashed (never plain text)
-- [ ] SQL injection prevented
-- [ ] XSS prevented
-
-## Authentication
-- [ ] Tokens have expiry
-- [ ] Secure token storage
-- [ ] Logout invalidates session
-```
-
-### Steg 3: Test skill-en
-
-1. Åpne Copilot Chat
-2. Skriv: `Check this code for security issues` og lim inn litt kode
-3. Sjekk at Copilot bruker sjekklisten din
-
----
-
-## Øvelse 5: Lag en refactoring-agent (10 min)
-
-**Din oppgave:** Lag en agent som foreslår forbedringer i kode.
-
-### Steg 1: Opprett agentfilen
-
-Opprett filen `.github/agents/refactoring.agent.md`
-
-### Steg 2: Legg til innhold
-
-```markdown
----
-name: refactoring
-description: Suggests code improvements and refactoring
+name: ditt-navn
+description: Hva agenten gjør (viktig for når den aktiveres!)
 tools: githubRepo
 ---
 
-# Refactoring Agent
+# Agentens rolle
 
-Du analyserer kode og foreslår forbedringer.
+[Beskriv hva agenten skal gjøre]
 
-## Når bør kode refaktoreres?
-- Funksjoner over 20 linjer
-- Duplisert kode (DRY-prinsippet)
-- Dyp nesting (mer enn 3 nivåer)
-- Uklare variabelnavn
-
-## Clean Code prinsipper
-- En funksjon gjør én ting
-- Beskrivende navn
-- Små, fokuserte klasser
-- Kommentarer forklarer "hvorfor", ikke "hva"
-
-## Output format
-For hver forbedring, vis:
-1. Problem: Hva er galt
-2. Løsning: Hvordan fikse det
-3. Før/etter kodeeksempel
+## Regler
+1. [Regel 1]
+2. [Regel 2]
+3. [Regel 3]
 ```
 
-### Steg 3: Test agenten
+### Test den
 
-1. Åpne Copilot Chat
-2. Skriv: `@refactoring analyser denne koden` og lim inn noe kode
-3. Sjekk at agenten gir konkrete forbedringsforslag
+Opprett filen og test med `@ditt-navn [kommando]`
 
 ---
 
 ## Nøkkelpunkter
 
-✅ Agents = spesialiserte roller med egne regler
-✅ Skills = domenekunnskap som aktiveres automatisk
-✅ `description` feltet bestemmer når de brukes
-✅ Test og iterer for bedre resultater
+- Agents = spesialiserte roller med egne regler
+- Skills = domenekunnskap som aktiveres automatisk
+- `description` feltet bestemmer når de brukes
+- Start enkelt, utvid basert på behov
 
 ---
 

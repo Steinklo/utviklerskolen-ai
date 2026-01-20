@@ -1,8 +1,10 @@
-# Live Demo: La Copilot bygge appen
+# Del 0: Generer appen selv
 
-I denne demoen viser vi hvordan GitHub Copilot kan generere en hel fullstack-app basert kun på instruksjonene vi har skrevet.
+I denne delen skal **du** la Copilot generere en hel fullstack-app. Jobb gjerne i par!
 
-## Før vi starter
+---
+
+## Før du starter
 
 Sjekk at du har:
 - [x] VS Code med GitHub Copilot
@@ -10,15 +12,15 @@ Sjekk at du har:
 - [x] Node.js 20+
 - [x] Prosjektet åpent i VS Code
 
-## Del 1: Generer Backend (5 min)
+---
 
-### Steg 1: Åpne Copilot Chat
+## Steg 1: Generer Backend (5 min)
+
+### 1.1 Åpne Copilot Chat
 
 Trykk `Ctrl+Shift+I` (eller `Cmd+Shift+I` på Mac)
 
-### Steg 2: Gi Copilot instruksjoner
-
-Skriv denne prompten:
+### 1.2 Lim inn denne prompten
 
 ```
 @workspace Create a complete .NET 9 Minimal API in the backend folder for a DDE-facts app.
@@ -34,28 +36,28 @@ Include:
 Use the data contract from .github/copilot-instructions.md
 ```
 
-### Steg 3: La Copilot jobbe
+### 1.3 Godta filene
 
-Copilot vil generere alle filene. Godta forslagene.
+Copilot genererer flere filer. Godta alle forslagene.
 
-### Steg 4: Kjør backend
+### 1.4 Kjør backend
 
 ```bash
 cd backend
 dotnet run
 ```
 
-### Steg 5: Test API
+### 1.5 Test at det fungerer
 
-Åpne http://localhost:5000/api/facts i nettleseren.
+Åpne http://localhost:5000/api/facts i nettleseren. Du skal se JSON med D.D.E. fakta!
 
 ---
 
-## Del 2: Generer Frontend (5 min)
+## Steg 2: Generer Frontend (5 min)
 
-### Steg 1: Ny Copilot Chat
+### 2.1 Ny Copilot Chat
 
-### Steg 2: Gi Copilot instruksjoner
+### 2.2 Lim inn denne prompten
 
 ```
 @workspace Create a complete React + TypeScript + Vite frontend in the frontend folder for a DDE-facts app.
@@ -74,11 +76,9 @@ Include:
 Configure vite to proxy /api to http://localhost:5000
 ```
 
-### Steg 3: La Copilot jobbe
+### 2.3 Godta filene
 
-Godta alle filene som genereres.
-
-### Steg 4: Installer og kjør
+### 2.4 Installer og kjør
 
 ```bash
 cd frontend
@@ -86,28 +86,19 @@ npm install
 npm run dev
 ```
 
-### Steg 5: Se resultatet
+### 2.5 Se resultatet
 
-Åpne http://localhost:5173 - du skal se D.D.E. fakta!
+Åpne http://localhost:5173 - du skal se D.D.E. fakta med styling!
 
 ---
 
-## Diskusjon
+## Refleksjon (2 min)
 
-Etter demoen, diskuter med studentene:
+Diskuter med partneren din:
 
-1. **Hva gikk bra?**
-   - Copilot fulgte instruksjonene
-   - Koden matcher mønstrene vi definerte
-
-2. **Hva måtte justeres?**
-   - Kanskje noen imports
-   - Muligens CORS-konfigurasjon
-
-3. **Hva lærte vi?**
-   - Gode instruksjoner = god kode
-   - Copilot er en assistent, ikke en erstatning
-   - Vi må fortsatt forstå koden
+1. **Hva skjedde?** Copilot leste instruksjonene og genererte kode som matcher.
+2. **Hva måtte du justere?** Kanskje noen imports eller CORS?
+3. **Hva betyr dette?** Gode instruksjoner = forutsigbar kode.
 
 ---
 
@@ -117,17 +108,13 @@ Etter demoen, diskuter med studentene:
 ```bash
 dotnet restore
 dotnet build
-# Se etter feilmeldinger
 ```
 
 ### Frontend viser ikke data
-1. Sjekk at backend kjører
+1. Sjekk at backend kjører på port 5000
 2. Sjekk CORS i Program.cs
 3. Sjekk vite.config.ts proxy
 
-### Copilot genererer feil struktur
-Vær mer spesifikk i prompten, referer til `.copilot/instructions.md` eksplisitt.
-
 ---
 
-**Neste:** [Nivå 1: Custom Instructions](01-custom-instructions.md) - forstå hvordan instruksjonene fungerer
+**Neste:** [Nivå 1: Custom Instructions](01-custom-instructions.md)
