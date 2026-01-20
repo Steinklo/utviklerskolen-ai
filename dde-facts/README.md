@@ -41,16 +41,9 @@ cd frontend && npm test
 ```
 dde-facts/
 ├── backend/src/DdeFacts.Api/
-│   ├── Program.cs
-│   ├── Models/
-│   ├── DTOs/
-│   └── Services/
 ├── frontend/src/
-│   ├── components/
-│   ├── pages/
-│   ├── hooks/
-│   └── types/
-└── .claude/          # Claude Code config
+├── .claude/          # Claude Code config
+└── .github/          # Copilot config
 ```
 
 ## API
@@ -60,24 +53,24 @@ dde-facts/
 | GET | `/api/facts` | All facts |
 | GET | `/api/facts/{id}` | Single fact |
 
-**Response:**
-```json
-{
-  "facts": [{
-    "id": 1,
-    "title": "Fra After Dark til D.D.E.",
-    "description": "Bandet startet som After Dark i 1984...",
-    "year": 1984,
-    "category": "History"
-  }]
-}
-```
-
 ## AI-Assisted Development
 
-### Claude Code
-See [CLAUDE.md](CLAUDE.md) for agents, skills, commands, and hooks.
+This project works with both **Claude Code** and **GitHub Copilot**.
 
-### GitHub Copilot
-- `backend/.copilot/instructions.md` - C# patterns
-- `frontend/.copilot/instructions.md` - React/TS patterns
+| Feature | Claude Code | GitHub Copilot |
+|---------|-------------|----------------|
+| Instructions | `CLAUDE.md` | `.github/copilot-instructions.md` |
+| Agents | `.claude/agents/*.md` | `.github/agents/*.agent.md` |
+| Skills | `.claude/skills/*/SKILL.md` | `.github/skills/*/SKILL.md` |
+| Commands | `.claude/commands/*.md` | - |
+| Hooks | `.claude/settings.json` | - |
+
+### Available Agents
+- `code-reviewer` - Reviews code quality
+- `test-runner` - Runs and analyzes tests
+
+### Available Skills
+- `dde-expert` - D.D.E. band knowledge
+- `code-review` - Review checklist
+
+See [CLAUDE.md](CLAUDE.md) for Claude Code details.
