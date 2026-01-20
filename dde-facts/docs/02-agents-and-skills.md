@@ -1,139 +1,151 @@
 # Nivå 2: Agents og Skills
 
-Agents og Skills gir Copilot spesialiserte evner for spesifikke oppgaver.
+Lag spesialiserte AI-agenter for spesifikke oppgaver.
+
+---
 
 ## Custom Agents
 
-Agents er spesialiserte versjoner av Copilot med egne instruksjoner og verktøy.
+Agenter er spesialiserte versjoner av Copilot med egne instruksjoner.
 
-### Filplassering
+**Filplassering:** `.github/agents/NAVN.agent.md`
 
-```
-.github/agents/NAVN.agent.md
-```
+---
 
-### Format
+## Øvelse 1: Bruk code-reviewer agenten (5 min)
+
+### Steg 1: Se på agenten
+
+Åpne `.github/agents/code-reviewer.agent.md`
+
+Legg merke til:
+- `name` - Agent-ID
+- `description` - Når agenten brukes
+- `tools` - Hva den har tilgang til
+
+### Steg 2: Test agenten
+
+Hvis du har generert backend fra demoen:
+
+1. Åpne Copilot Chat
+2. Skriv: `@code-reviewer review the FactService`
+3. Se hva agenten finner
+
+---
+
+## Øvelse 2: Lag din egen agent (10 min)
+
+### Steg 1: Opprett agentfil
+
+Opprett `.github/agents/documentation.agent.md`:
 
 ```markdown
 ---
-name: agent-navn
-description: Når denne agenten skal brukes
-tools: githubRepo, terminal
+name: documentation
+description: Writes clear documentation for code
+tools: githubRepo
 ---
 
-# Agent Instruksjoner
+# Documentation Agent
 
-Du er en spesialist på...
+You write clear, helpful documentation in Norwegian.
+
+## When documenting code:
+1. Explain what the code does
+2. Give usage examples
+3. List parameters and return values
+4. Keep it simple and beginner-friendly
 ```
 
-### Eksempler i dette prosjektet
+### Steg 2: Test agenten
 
-| Agent | Fil | Formål |
-|-------|-----|--------|
-| code-reviewer | `.github/agents/code-reviewer.agent.md` | Kodegjennomgang |
-| test-runner | `.github/agents/test-runner.agent.md` | Kjøre tester |
+1. Åpne Copilot Chat
+2. Skriv: `@documentation document the Fact data model`
+3. Vurder resultatet - er dokumentasjonen god?
 
-## Øvelse 1: Se på en agent
+### Steg 3: Forbedre agenten
 
-1. Åpne `.github/agents/code-reviewer.agent.md`
-2. Les gjennom:
-   - `name` - Agent-ID
-   - `description` - Når den aktiveres
-   - `tools` - Hva den kan bruke
-   - Instruksjonene i body
-
-## Øvelse 2: Bruk en agent
-
-I VS Code med Copilot Chat:
-1. Skriv `@code-reviewer` i chatten
-2. Be den gjennomgå en fil
-
-I GitHub.com:
-1. Gå til en Pull Request
-2. Velg `code-reviewer` agenten
+Basert på resultatet, juster instruksjonene og test igjen.
 
 ---
 
 ## Agent Skills
 
-Skills er kunnskapspakker som Copilot kan bruke når det trengs.
+Skills er kunnskapspakker som Copilot kan bruke.
 
-### Filplassering
+**Filplassering:** `.github/skills/NAVN/SKILL.md`
 
+---
+
+## Øvelse 3: Utforsk dde-expert skill (5 min)
+
+### Steg 1: Åpne skill-filen
+
+Åpne `.github/skills/dde-expert/SKILL.md`
+
+### Steg 2: Test kunnskapen
+
+1. Åpne Copilot Chat
+2. Spør: `What year was D.D.E. formed?`
+3. Spør: `Who was the main songwriter?`
+
+Copilot bruker skill-en automatisk fordi den matcher konteksten.
+
+---
+
+## Øvelse 4: Utvid dde-expert skill (10 min)
+
+### Steg 1: Legg til mer kunnskap
+
+Åpne `.github/skills/dde-expert/SKILL.md` og legg til:
+
+```markdown
+## Konserter i Kristiansand
+- Spilt på Kilden flere ganger
+- Kjent for å åpne med Ten Sharp-introen
+- Alltid fullsatt når de kommer til Sørlandet
 ```
-.github/skills/SKILL-NAVN/SKILL.md
-```
 
-### Format
+### Steg 2: Test den nye kunnskapen
+
+1. Åpne Copilot Chat
+2. Spør: `Has D.D.E. played in Kristiansand?`
+3. Sjekk om Copilot bruker den nye informasjonen
+
+---
+
+## Øvelse 5: Lag en ny skill (bonus)
+
+Opprett `.github/skills/api-testing/SKILL.md`:
 
 ```markdown
 ---
-name: skill-navn
-description: Når denne skill-en aktiveres
+name: api-testing
+description: Knowledge about testing REST APIs
 ---
 
-# Skill Innhold
+# API Testing Guide
 
-Kunnskap, sjekklister, eksempler...
+## Tools
+- Use curl or httpie for quick tests
+- Use Postman for complex scenarios
+
+## Test checklist
+- [ ] Happy path (200 OK)
+- [ ] Not found (404)
+- [ ] Invalid input (400)
+- [ ] Server error handling (500)
 ```
 
-### Eksempler i dette prosjektet
+---
 
-| Skill | Mappe | Formål |
-|-------|-------|--------|
-| dde-expert | `.github/skills/dde-expert/` | D.D.E. bandkunnskap |
-| code-review | `.github/skills/code-review/` | Kodesjekksliste |
+## Nøkkelpunkter
 
-## Øvelse 3: Se på en skill
-
-1. Åpne `.github/skills/dde-expert/SKILL.md`
-2. Se hvordan den inneholder:
-   - Bandhistorie
-   - Medlemmer
-   - Fakta
-
-## Øvelse 4: Lag din egen agent
-
-1. Opprett filen `.github/agents/documentation.agent.md`
-2. Legg til:
-   ```markdown
-   ---
-   name: documentation
-   description: Writes documentation for code
-   tools: githubRepo
-   ---
-
-   # Documentation Agent
-
-   You write clear, concise documentation.
-
-   ## Rules
-   - Use Norwegian for comments
-   - Keep explanations simple
-   - Include code examples
-   ```
-3. Test agenten i Copilot Chat
-
-## Øvelse 5: Lag din egen skill
-
-1. Opprett mappen `.github/skills/api-patterns/`
-2. Opprett filen `SKILL.md`:
-   ```markdown
-   ---
-   name: api-patterns
-   description: REST API design patterns
-   ---
-
-   # API Patterns
-
-   ## Endpoints
-   - GET /resources - List all
-   - GET /resources/{id} - Get one
-   - POST /resources - Create
-   - PUT /resources/{id} - Update
-   - DELETE /resources/{id} - Delete
-   ```
+✅ Agents = spesialiserte roller (code-reviewer, test-runner)
+✅ Skills = domenekunnskap (dde-expert, api-testing)
+✅ Begge aktiveres automatisk basert på `description`
+✅ Test og iterer for best resultat
 
 ---
 
-**Neste:** [Nivå 3: GitHub Copilot CLI](03-copilot-cli.md)
+**Neste:** [Nivå 3: Copilot CLI](03-copilot-cli.md)

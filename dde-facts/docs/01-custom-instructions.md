@@ -1,66 +1,111 @@
 # Nivå 1: Custom Instructions
 
-Custom Instructions er den enkleste måten å tilpasse GitHub Copilot til prosjektet ditt.
+Lær hvordan instruksjonsfilen styrer hva Copilot genererer.
+
+---
 
 ## Hva er Custom Instructions?
 
 En markdown-fil som forteller Copilot om prosjektet ditt:
-- Hvilke teknologier du bruker
-- Kodekonvensjoner og mønstre
+- Teknologier og rammeverk
+- Kodekonvensjoner
 - Prosjektstruktur
 
-Copilot leser denne filen automatisk og tilpasser forslagene sine.
+**Filplassering:** `.github/copilot-instructions.md`
 
-## Filplassering
+---
 
-```
-.github/copilot-instructions.md
-```
+## Øvelse 1: Utforsk instruksjonene (5 min)
 
-## Eksempel
+### Steg 1: Åpne hovedinstruksjonene
 
-Se vår fil: [.github/copilot-instructions.md](../.github/copilot-instructions.md)
+Åpne `.github/copilot-instructions.md` og les gjennom.
+
+### Steg 2: Svar på disse spørsmålene
+
+1. Hvilke teknologier bruker backend?
+2. Hvilke kategorier kan en Fact ha?
+3. Hva er reglene for språk i koden?
+
+<details>
+<summary>Fasit</summary>
+
+1. C# ASP.NET Core Minimal API
+2. History, Hits, Live, Trivia
+3. Kode på engelsk, innhold på norsk
+</details>
+
+---
+
+## Øvelse 2: Utforsk backend-instruksjonene (5 min)
+
+### Steg 1: Åpne backend-instruksjonene
+
+Åpne `backend/.copilot/instructions.md`
+
+### Steg 2: Finn mønstrene
+
+1. Hva er forskjellen på "DO" og "DON'T"?
+2. Hvorfor bruker vi `record` i stedet for `class` for DTOs?
+3. Hvordan ser et Minimal API endpoint ut?
+
+---
+
+## Øvelse 3: Endre instruksjonene og test (10 min)
+
+### Steg 1: Legg til en ny regel
+
+Åpne `.github/copilot-instructions.md` og legg til under "Rules":
 
 ```markdown
-# Prosjektnavn
-
-## Tech Stack
-- Backend: C# ASP.NET Core
-- Frontend: React + TypeScript
-
-## Regler
-- Bruk records for DTOs
-- Bruk React Query for data fetching
+## Logging
+- Use ILogger for all logging
+- Log at Info level for successful operations
+- Log at Error level for exceptions
 ```
 
-## Øvelse 1: Les instruksjonene
+### Steg 2: Test med Copilot
 
-1. Åpne `.github/copilot-instructions.md`
-2. Les gjennom innholdet
-3. Forstå hvordan det beskriver DDE-facts prosjektet
-
-## Øvelse 2: Test Copilot
-
-1. Åpne VS Code i dette prosjektet
-2. Opprett en ny fil `test.ts`
-3. Skriv: `// create a function to fetch facts`
-4. Se hvordan Copilot foreslår kode basert på instruksjonene
-
-## Øvelse 3: Endre instruksjonene
-
-1. Legg til en ny regel i `copilot-instructions.md`:
-   ```markdown
-   ## Logging
-   - Always use console.error for errors
-   - Never use console.log in production code
+1. Åpne Copilot Chat (`Ctrl+Shift+I`)
+2. Skriv:
    ```
-2. Test at Copilot følger den nye regelen
+   @workspace Create a FactService method that logs when facts are retrieved
+   ```
+3. Se om Copilot følger logging-regelen din
 
-## Tips
+### Steg 3: Evaluer resultatet
 
-- Hold instruksjonene korte og konkrete
-- Fokuser på det som er unikt for prosjektet
-- Oppdater når prosjektet endrer seg
+- Brukte Copilot ILogger?
+- Logget den på riktig nivå?
+- Hvis ikke, hvordan kan du forbedre instruksjonen?
+
+---
+
+## Øvelse 4: Lag instruksjoner for et nytt prosjekt (bonus)
+
+Tenk på et prosjekt du jobber med. Skriv en enkel instruksjonsfil:
+
+```markdown
+# Mitt Prosjekt
+
+## Tech Stack
+- [Dine teknologier]
+
+## Data Contract
+[Dine hovedmodeller]
+
+## Rules
+- [Dine regler]
+```
+
+---
+
+## Nøkkelpunkter
+
+✅ Instruksjoner er bare tekst - Copilot leser og følger dem
+✅ Vær spesifikk om mønstre du vil bruke
+✅ Inkluder DO/DON'T eksempler
+✅ Oppdater når prosjektet endrer seg
 
 ---
 

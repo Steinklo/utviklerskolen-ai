@@ -1,6 +1,8 @@
 # Nivå 3: GitHub Copilot CLI
 
-GitHub Copilot CLI lar deg bruke Copilot direkte i terminalen.
+Bruk Copilot direkte i terminalen.
+
+---
 
 ## Installasjon
 
@@ -9,7 +11,7 @@ GitHub Copilot CLI lar deg bruke Copilot direkte i terminalen.
 brew install gh
 gh extension install github/gh-copilot
 
-# Windows (med winget)
+# Windows (winget)
 winget install GitHub.cli
 gh extension install github/gh-copilot
 
@@ -17,117 +19,162 @@ gh extension install github/gh-copilot
 gh auth login
 ```
 
-## Grunnleggende kommandoer
+---
 
-### Spør Copilot
+## Øvelse 1: Installer og verifiser (5 min)
 
-```bash
-gh copilot suggest "how to list all files in a directory"
-```
+### Steg 1: Installer
 
-### Forklar en kommando
+Følg instruksjonene over for ditt OS.
 
-```bash
-gh copilot explain "git rebase -i HEAD~3"
-```
-
-### Kjør i chat-modus
+### Steg 2: Verifiser
 
 ```bash
-gh copilot chat
+gh copilot --version
 ```
 
-## Innebygde Agents
+Du skal se versjonsnummer.
 
-Copilot CLI har innebygde agenter:
-
-| Agent | Formål |
-|-------|--------|
-| `@explore` | Analyser kodebase raskt |
-| `@task` | Kjør kommandoer som tester/bygg |
-| `@plan` | Lag implementasjonsplaner |
-| `@code-review` | Gjennomgå kodeendringer |
-
-### Eksempel: Utforsk kodebasen
+### Steg 3: Test en enkel kommando
 
 ```bash
-gh copilot chat
-> @explore what does the FactService do?
+gh copilot explain "ls -la"
 ```
 
-### Eksempel: Kjør tester
+Copilot forklarer hva kommandoen gjør.
 
-```bash
-gh copilot chat
-> @task run the backend tests
-```
+---
 
-## Øvelse 1: Installer Copilot CLI
+## Øvelse 2: Utforsk kodebasen (5 min)
 
-1. Følg installasjonsinstruksjonene over
-2. Verifiser installasjonen:
-   ```bash
-   gh copilot --version
-   ```
-
-## Øvelse 2: Spør om hjelp
-
-```bash
-gh copilot suggest "create a new dotnet project"
-```
-
-Se hva Copilot foreslår.
-
-## Øvelse 3: Forklar en kommando
-
-```bash
-gh copilot explain "docker run -d -p 8080:80 --name myapp nginx"
-```
-
-## Øvelse 4: Bruk chat-modus
+### Steg 1: Start chat-modus
 
 ```bash
 cd dde-facts
 gh copilot chat
 ```
 
-Prøv disse:
-- `@explore what technologies does this project use?`
-- `@explore where are the API endpoints defined?`
-- `@task list all files in the backend folder`
+### Steg 2: Bruk @explore agenten
 
-## Øvelse 5: La Copilot skrive en kommando
+Skriv disse i chatten:
 
-```bash
-gh copilot suggest "find all TypeScript files containing 'useState'"
+```
+@explore what files are in the .github folder?
 ```
 
-Copilot vil foreslå en kommando du kan kjøre.
+```
+@explore what does the copilot-instructions.md file contain?
+```
 
-## Tips
+```
+@explore list all agent files
+```
 
-- Bruk `@explore` for å forstå kode uten å endre noe
-- Bruk `@task` for å kjøre tester og bygg
-- Chat-modus husker kontekst mellom meldinger
+### Steg 3: Avslutt
 
-## Konfigurasjon
+Skriv `exit` for å avslutte chat.
 
-Copilot CLI kan konfigureres i `~/.copilot/config`:
+---
 
-```yaml
-# Tillat/blokker nettsider
-allowed_urls:
-  - "docs.microsoft.com"
-  - "*.github.com"
-denied_urls:
-  - "*.internal.company.com"
+## Øvelse 3: Kjør kommandoer med @task (5 min)
+
+Hvis du har generert backend fra demoen:
+
+### Steg 1: Start chat
+
+```bash
+cd dde-facts/backend
+gh copilot chat
+```
+
+### Steg 2: Kjør bygg
+
+```
+@task build the dotnet project
+```
+
+### Steg 3: Kjør tester (hvis du har laget tester)
+
+```
+@task run the tests
 ```
 
 ---
 
-**Ferdig!** Du har nå lært:
-1. ✅ Custom Instructions
-2. ✅ Agents og Skills
-3. ✅ GitHub Copilot CLI
+## Øvelse 4: La Copilot foreslå kommandoer (5 min)
 
-Gå tilbake til [README](../README.md) for oversikt.
+### Steg 1: Be om hjelp med en oppgave
+
+```bash
+gh copilot suggest "find all markdown files in current directory"
+```
+
+### Steg 2: Se forslaget
+
+Copilot viser en kommando du kan kjøre.
+
+### Steg 3: Prøv flere
+
+```bash
+gh copilot suggest "count lines of code in all TypeScript files"
+```
+
+```bash
+gh copilot suggest "show git log with graph"
+```
+
+---
+
+## Øvelse 5: Forklar komplekse kommandoer (5 min)
+
+### Steg 1: Forklar en git-kommando
+
+```bash
+gh copilot explain "git rebase -i HEAD~3"
+```
+
+### Steg 2: Forklar en docker-kommando
+
+```bash
+gh copilot explain "docker run -d -p 8080:80 -v $(pwd):/app nginx"
+```
+
+### Steg 3: Forklar en du er usikker på
+
+Har du en kommando du har sett men ikke forstår? Prøv:
+
+```bash
+gh copilot explain "din-kommando-her"
+```
+
+---
+
+## Innebygde CLI-agenter
+
+| Agent | Bruk |
+|-------|------|
+| `@explore` | Utforsk kodebase uten å endre noe |
+| `@task` | Kjør kommandoer (test, bygg) |
+| `@plan` | Lag implementasjonsplaner |
+| `@code-review` | Gjennomgå endringer |
+
+---
+
+## Nøkkelpunkter
+
+✅ `gh copilot suggest` - få kommandoforslag
+✅ `gh copilot explain` - forstå kommandoer
+✅ `gh copilot chat` - interaktiv modus
+✅ `@explore`, `@task` - spesialiserte agenter i chat
+
+---
+
+## Ferdig!
+
+Du har nå lært:
+
+1. ✅ **Custom Instructions** - Gi Copilot kontekst
+2. ✅ **Agents og Skills** - Spesialiserte AI-hjelpere
+3. ✅ **Copilot CLI** - AI i terminalen
+
+Gå tilbake til [README](../README.md) for ressurser og videre læring.
