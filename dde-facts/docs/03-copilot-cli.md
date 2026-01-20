@@ -1,6 +1,6 @@
 # Nivå 3: GitHub Copilot CLI
 
-Bruk Copilot direkte i terminalen.
+Bruk Copilot direkte i terminalen til å lage og kjøre ting.
 
 ---
 
@@ -21,7 +21,9 @@ gh auth login
 
 ---
 
-## Øvelse 1: Installer og verifiser (5 min)
+## Øvelse 1: Installer og test (5 min)
+
+**Din oppgave:** Installer Copilot CLI og verifiser at det fungerer.
 
 ### Steg 1: Installer
 
@@ -33,19 +35,19 @@ Følg instruksjonene over for ditt OS.
 gh copilot --version
 ```
 
-Du skal se versjonsnummer.
-
-### Steg 3: Test en enkel kommando
+### Steg 3: Test explain-kommandoen
 
 ```bash
 gh copilot explain "ls -la"
 ```
 
-Copilot forklarer hva kommandoen gjør.
+Copilot skal forklare hva kommandoen gjør.
 
 ---
 
-## Øvelse 2: Utforsk kodebasen (5 min)
+## Øvelse 2: Lag et bash-script med Copilot (10 min)
+
+**Din oppgave:** Bruk Copilot til å lage et script som finner store filer.
 
 ### Steg 1: Start chat-modus
 
@@ -54,97 +56,127 @@ cd dde-facts
 gh copilot chat
 ```
 
-### Steg 2: Bruk @explore agenten
+### Steg 2: Be Copilot lage scriptet
 
-Skriv disse i chatten:
-
-```
-@explore what files are in the .github folder?
-```
+Skriv i chatten:
 
 ```
-@explore what does the copilot-instructions.md file contain?
+Create a bash script that finds all files larger than 1MB in the current directory and shows their sizes
 ```
 
-```
-@explore list all agent files
-```
+### Steg 3: Lagre scriptet
 
-### Steg 3: Avslutt
+Kopier koden Copilot gir deg og lagre som `find-large-files.sh`
 
-Skriv `exit` for å avslutte chat.
+### Steg 4: Kjør scriptet
+
+```bash
+chmod +x find-large-files.sh
+./find-large-files.sh
+```
 
 ---
 
-## Øvelse 3: Kjør kommandoer med @task (5 min)
+## Øvelse 3: Bygg og test med @task (10 min)
 
-Hvis du har generert backend fra demoen:
+**Din oppgave:** Bruk CLI til å bygge og kjøre prosjektet.
 
-### Steg 1: Start chat
+### Forutsetning
+Du må ha generert backend fra live-demoen først.
+
+### Steg 1: Start chat i backend-mappen
 
 ```bash
 cd dde-facts/backend
 gh copilot chat
 ```
 
-### Steg 2: Kjør bygg
+### Steg 2: Bygg prosjektet
 
 ```
-@task build the dotnet project
+@task build this dotnet project
 ```
 
-### Steg 3: Kjør tester (hvis du har laget tester)
+### Steg 3: Kjør prosjektet
 
 ```
-@task run the tests
+@task run this project
+```
+
+### Steg 4: Test API-et
+
+Åpne en ny terminal og kjør:
+```bash
+gh copilot suggest "curl command to test localhost:5000/api/facts"
+```
+
+Kjør kommandoen Copilot foreslår.
+
+---
+
+## Øvelse 4: Lag en git-kommando (10 min)
+
+**Din oppgave:** Bruk Copilot til å lage en kompleks git-kommando.
+
+### Steg 1: Be om hjelp
+
+```bash
+gh copilot suggest "show git commits from last week with file changes and author"
+```
+
+### Steg 2: Forstå kommandoen
+
+Kopier kommandoen og kjør:
+
+```bash
+gh copilot explain "[kommandoen fra steg 1]"
+```
+
+### Steg 3: Kjør kommandoen
+
+Kjør kommandoen i prosjektmappen og se resultatet.
+
+### Steg 4: Lag din egen
+
+Prøv selv:
+```bash
+gh copilot suggest "find all commits that changed markdown files"
 ```
 
 ---
 
-## Øvelse 4: La Copilot foreslå kommandoer (5 min)
+## Øvelse 5: Lag et deployment-script (10 min)
 
-### Steg 1: Be om hjelp med en oppgave
+**Din oppgave:** Lag et script som bygger både backend og frontend.
+
+### Steg 1: Start chat
 
 ```bash
-gh copilot suggest "find all markdown files in current directory"
+cd dde-facts
+gh copilot chat
 ```
 
-### Steg 2: Se forslaget
+### Steg 2: Beskriv hva du trenger
 
-Copilot viser en kommando du kan kjøre.
-
-### Steg 3: Prøv flere
-
-```bash
-gh copilot suggest "count lines of code in all TypeScript files"
+```
+Create a bash script called build-all.sh that:
+1. Builds the dotnet backend in /backend
+2. Runs npm install and npm run build in /frontend
+3. Shows success/error message for each step
+4. Exits with error code if any step fails
 ```
 
-```bash
-gh copilot suggest "show git log with graph"
+### Steg 3: Lagre og test
+
+1. Kopier scriptet til `build-all.sh`
+2. Gjør det kjørbart: `chmod +x build-all.sh`
+3. Kjør det: `./build-all.sh`
+
+### Steg 4: Forbedre scriptet
+
+Be Copilot forbedre det:
 ```
-
----
-
-## Øvelse 5: Forklar komplekse kommandoer (5 min)
-
-### Steg 1: Forklar en git-kommando
-
-```bash
-gh copilot explain "git rebase -i HEAD~3"
-```
-
-### Steg 2: Forklar en docker-kommando
-
-```bash
-gh copilot explain "docker run -d -p 8080:80 -v $(pwd):/app nginx"
-```
-
-### Steg 3: Forklar en du er usikker på
-
-Har du en kommando du har sett men ikke forstår? Prøv:
-
-```bash
-gh copilot explain "din-kommando-her"
+Add colored output (green for success, red for error) to this script
 ```
 
 ---
@@ -164,8 +196,8 @@ gh copilot explain "din-kommando-her"
 
 ✅ `gh copilot suggest` - få kommandoforslag
 ✅ `gh copilot explain` - forstå kommandoer
-✅ `gh copilot chat` - interaktiv modus
-✅ `@explore`, `@task` - spesialiserte agenter i chat
+✅ `gh copilot chat` - interaktiv modus for å lage scripts
+✅ `@task` - kjør bygg og tester direkte
 
 ---
 
@@ -175,6 +207,6 @@ Du har nå lært:
 
 1. ✅ **Custom Instructions** - Gi Copilot kontekst
 2. ✅ **Agents og Skills** - Spesialiserte AI-hjelpere
-3. ✅ **Copilot CLI** - AI i terminalen
+3. ✅ **Copilot CLI** - Lag scripts og kjør kommandoer
 
 Gå tilbake til [README](../README.md) for ressurser og videre læring.

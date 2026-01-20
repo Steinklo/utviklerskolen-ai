@@ -54,14 +54,12 @@ category: 'History' | 'Hits' | 'Live' | 'Trivia' | 'Members';
 
 ### Steg 2: Legg til under "Rules"
 
-```markdown
-## Logging
+Legg til en ny seksjon "Logging" med disse reglene:
 - Use ILogger for all logging
 - Log at Info level for successful operations
 - Log at Warning level for handled errors
 - Log at Error level for exceptions
 - Always include context (e.g., fact ID, operation name)
-```
 
 ### Steg 3: Test regelen
 
@@ -77,7 +75,7 @@ category: 'History' | 'Hits' | 'Live' | 'Trivia' | 'Members';
 
 ---
 
-## Øvelse 3: Legg til en ny API-endpoint regel (10 min)
+## Øvelse 3: Legg til en Swagger-regel (10 min)
 
 **Din oppgave:** Legg til en regel om at alle endpoints skal ha Swagger-dokumentasjon.
 
@@ -87,16 +85,13 @@ category: 'History' | 'Hits' | 'Live' | 'Trivia' | 'Members';
 
 ### Steg 2: Legg til en ny DO-regel
 
-```markdown
-### ✅ DO: Add Swagger documentation
-```csharp
-app.MapGet("/api/facts", async (IFactService service) =>
-    Results.Ok(await service.GetAllAsync()))
-    .WithName("GetAllFacts")
-    .WithDescription("Returns all D.D.E. facts")
-    .Produces<FactsResponse>(200);
-```
-```
+Under "Key Patterns", legg til en ny seksjon:
+
+**Tittel:** `### ✅ DO: Add Swagger documentation`
+
+**Innhold:** Et kodeeksempel som viser `.WithName()`, `.WithDescription()` og `.Produces<T>()` på et endpoint.
+
+Se på de eksisterende DO/DON'T mønstrene i filen for inspirasjon.
 
 ### Steg 3: Test regelen
 
@@ -105,7 +100,7 @@ app.MapGet("/api/facts", async (IFactService service) =>
    ```
    @workspace Create a new endpoint GET /api/facts/random that returns a random fact
    ```
-3. Sjekk at Copilot inkluderer `.WithName()` og `.WithDescription()`
+3. Sjekk at Copilot inkluderer Swagger-metodene
 
 ---
 
@@ -117,29 +112,13 @@ app.MapGet("/api/facts", async (IFactService service) =>
 
 Åpne `frontend/.copilot/instructions.md`
 
-### Steg 2: Legg til en ny seksjon
+### Steg 2: Legg til en Error Handling seksjon
 
-```markdown
-## Error Handling
+Legg til to nye mønstre:
 
-### ✅ DO: Show user-friendly error messages
-```typescript
-if (error) {
-  return (
-    <div className="text-red-600 p-4 rounded bg-red-50">
-      <h3 className="font-bold">Noe gikk galt</h3>
-      <p>Kunne ikke laste fakta. Prøv igjen senere.</p>
-    </div>
-  );
-}
-```
+**DO:** Vis brukervennlige feilmeldinger på norsk med Tailwind-styling (rød bakgrunn, tydelig tekst).
 
-### ❌ DON'T: Show technical errors to users
-```typescript
-// Avoid showing raw error messages
-if (error) return <div>{error.message}</div>;
-```
-```
+**DON'T:** Vis tekniske feilmeldinger direkte til brukeren (som `error.message`).
 
 ### Steg 3: Test regelen
 
@@ -148,34 +127,47 @@ if (error) return <div>{error.message}</div>;
    ```
    @workspace Create an error component for when facts fail to load
    ```
-3. Sjekk at Copilot lager bruker-vennlige feilmeldinger på norsk
+3. Sjekk at Copilot lager bruker-vennlige feilmeldinger
 
 ---
 
 ## Øvelse 5: Lag instruksjoner for ditt eget prosjekt (bonus)
 
-Tenk på et prosjekt du jobber med. Lag en instruksjonsfil med minst:
-- Tech stack
-- 2 DO/DON'T eksempler
-- 1 custom regel
+**Din oppgave:** Lag en instruksjonsfil for et prosjekt du jobber med.
+
+### Steg 1: Opprett filen
+
+Lag en ny fil `my-project-instructions.md` (hvor som helst).
+
+### Steg 2: Fyll inn malen
 
 ```markdown
-# Mitt Prosjekt
+# [Prosjektnavn]
 
 ## Tech Stack
-- [Dine teknologier]
+- Backend: [teknologi]
+- Frontend: [teknologi]
+- Database: [teknologi]
+
+## Data Models
+[Beskriv hovedmodellene]
 
 ## Patterns
 
-### ✅ DO: [Ditt mønster]
-[Kodeeksempel]
+### ✅ DO: [Navn på mønster]
+[Beskriv hva som er bra praksis]
 
-### ❌ DON'T: [Anti-mønster]
-[Kodeeksempel]
+### ❌ DON'T: [Navn på anti-mønster]
+[Beskriv hva som skal unngås]
 
 ## Rules
-- [Din regel]
+- [Regel 1]
+- [Regel 2]
 ```
+
+### Steg 3: Test med Copilot
+
+Åpne filen i VS Code og bruk Copilot Chat til å generere kode. Følger den instruksjonene?
 
 ---
 

@@ -18,7 +18,9 @@ Agenter er spesialiserte versjoner av Copilot med egne instruksjoner.
 
 ### Steg 1: Opprett agentfilen
 
-Opprett `.github/agents/documentation.agent.md`:
+Opprett filen `.github/agents/documentation.agent.md`
+
+### Steg 2: Legg til innhold
 
 ```markdown
 ---
@@ -38,13 +40,13 @@ Du skriver klar og tydelig dokumentasjon på norsk.
 4. Hold det kort og begynner-vennlig
 ```
 
-### Steg 2: Test agenten
+### Steg 3: Test agenten
 
 1. Åpne Copilot Chat (`Ctrl+Shift+I`)
 2. Skriv: `@documentation dokumenter Fact-modellen`
 3. Vurder: Er dokumentasjonen god? På norsk?
 
-### Steg 3: Forbedre agenten
+### Steg 4: Forbedre agenten
 
 Legg til flere regler basert på hva som manglet. Test igjen.
 
@@ -56,7 +58,9 @@ Legg til flere regler basert på hva som manglet. Test igjen.
 
 ### Steg 1: Opprett agentfilen
 
-Opprett `.github/agents/test-generator.agent.md`:
+Opprett filen `.github/agents/test-generator.agent.md`
+
+### Steg 2: Legg til innhold
 
 ```markdown
 ---
@@ -67,24 +71,24 @@ tools: githubRepo, terminal
 
 # Test Generator Agent
 
-You generate comprehensive unit tests.
+Du genererer grundige enhetstester.
 
 ## For C# (xUnit)
-- Use Arrange-Act-Assert pattern
-- Use FluentAssertions
-- Test happy path and edge cases
-- Name tests: MethodName_Scenario_ExpectedResult
+- Bruk Arrange-Act-Assert mønsteret
+- Bruk FluentAssertions
+- Test både happy path og edge cases
+- Navngi tester: MethodName_Scenario_ExpectedResult
 
 ## For TypeScript (Vitest)
-- Use describe/it blocks
-- Mock external dependencies
-- Test component rendering and interactions
+- Bruk describe/it blokker
+- Mock eksterne avhengigheter
+- Test komponent-rendering og interaksjoner
 ```
 
-### Steg 2: Test agenten
+### Steg 3: Test agenten
 
 1. Åpne Copilot Chat
-2. Skriv: `@test-generator create tests for a FactService that returns facts`
+2. Skriv: `@test-generator lag tester for en FactService som returnerer fakta`
 3. Sjekk at testene følger mønstrene du definerte
 
 ---
@@ -97,7 +101,7 @@ You generate comprehensive unit tests.
 
 Åpne `.github/skills/dde-expert/SKILL.md`
 
-### Steg 2: Legg til ny seksjon
+### Steg 2: Legg til ny seksjon på slutten
 
 ```markdown
 ## Kjente konserter
@@ -107,7 +111,7 @@ You generate comprehensive unit tests.
 - **Røros**: Kjent for vinterkonserter
 
 ## Konsert-fakta
-- Åpner ofte med "Ansen teansen" som intro
+- Åpner ofte med intro-musikk før de kommer på scenen
 - Bjarne snakker alltid med publikum mellom låtene
 - "Vinsjan på kaia" er alltid siste låt før ekstranummer
 ```
@@ -115,8 +119,8 @@ You generate comprehensive unit tests.
 ### Steg 3: Test kunnskapen
 
 1. Åpne Copilot Chat
-2. Spør: `Where has D.D.E. played concerts?`
-3. Spør: `What song do they always end with?`
+2. Spør: `Hvor har D.D.E. spilt konserter?`
+3. Spør: `Hvilken låt avslutter de alltid med?`
 4. Sjekk at Copilot bruker den nye informasjonen
 
 ---
@@ -127,7 +131,11 @@ You generate comprehensive unit tests.
 
 ### Steg 1: Opprett skill-mappen
 
-Opprett `.github/skills/security-review/SKILL.md`:
+Opprett mappen `.github/skills/security-review/`
+
+### Steg 2: Opprett SKILL.md
+
+Opprett filen `.github/skills/security-review/SKILL.md`:
 
 ```markdown
 ---
@@ -146,8 +154,8 @@ description: Security checklist for code review
 ## Data Security
 - [ ] No secrets in code
 - [ ] Passwords hashed (never plain text)
-- [ ] SQL injection prevented (parameterized queries)
-- [ ] XSS prevented (output encoding)
+- [ ] SQL injection prevented
+- [ ] XSS prevented
 
 ## Authentication
 - [ ] Tokens have expiry
@@ -155,24 +163,59 @@ description: Security checklist for code review
 - [ ] Logout invalidates session
 ```
 
-### Steg 2: Test skill-en
+### Steg 3: Test skill-en
 
 1. Åpne Copilot Chat
-2. Skriv: `Review this code for security issues: [paste some code]`
+2. Skriv: `Check this code for security issues` og lim inn litt kode
 3. Sjekk at Copilot bruker sjekklisten din
 
 ---
 
-## Øvelse 5: Lag en refactoring-agent (bonus)
+## Øvelse 5: Lag en refactoring-agent (10 min)
 
-**Din oppgave:** Lag en agent som foreslår refaktorering.
+**Din oppgave:** Lag en agent som foreslår forbedringer i kode.
 
-Opprett `.github/agents/refactoring.agent.md` med:
-- Regler for når kode bør refaktoreres
-- Clean Code prinsipper
-- Eksempler på før/etter
+### Steg 1: Opprett agentfilen
 
-Test med: `@refactoring review this code for improvements`
+Opprett filen `.github/agents/refactoring.agent.md`
+
+### Steg 2: Legg til innhold
+
+```markdown
+---
+name: refactoring
+description: Suggests code improvements and refactoring
+tools: githubRepo
+---
+
+# Refactoring Agent
+
+Du analyserer kode og foreslår forbedringer.
+
+## Når bør kode refaktoreres?
+- Funksjoner over 20 linjer
+- Duplisert kode (DRY-prinsippet)
+- Dyp nesting (mer enn 3 nivåer)
+- Uklare variabelnavn
+
+## Clean Code prinsipper
+- En funksjon gjør én ting
+- Beskrivende navn
+- Små, fokuserte klasser
+- Kommentarer forklarer "hvorfor", ikke "hva"
+
+## Output format
+For hver forbedring, vis:
+1. Problem: Hva er galt
+2. Løsning: Hvordan fikse det
+3. Før/etter kodeeksempel
+```
+
+### Steg 3: Test agenten
+
+1. Åpne Copilot Chat
+2. Skriv: `@refactoring analyser denne koden` og lim inn noe kode
+3. Sjekk at agenten gir konkrete forbedringsforslag
 
 ---
 
