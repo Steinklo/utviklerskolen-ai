@@ -96,7 +96,9 @@ Agent Mode lar Copilot jobbe **autonomt** - den kan gjøre flere endringer uten 
 
 #### Steg 1: Aktiver Agent Mode
 
-I Copilot Chat, klikk på dropdown ved "Ask" og velg **"Agent"**.
+I Copilot Chat, finn modusvalgeren (ofte en dropdown ved "Ask" eller "Chat") og velg **"Agent"** eller **"Copilot Edits"**.
+
+> **Merk:** UI-et kan variere mellom VS Code-versjoner. Se etter "Agent", "Edits" eller lignende.
 
 #### Steg 2: Gi en større oppgave
 
@@ -130,24 +132,26 @@ Hooks er scripts som kjører automatisk når Copilot gjør ting.
 
 ### Øvelse 4: Lag en enkel hook (10 min)
 
-**Din oppgave:** Lag en hook som kjører linting før commit.
+**Din oppgave:** Lag en hook som sjekker koden før commit.
+
+> **Windows-brukere:** Kjør kommandoene i Git Bash (følger med Git for Windows) eller WSL.
 
 #### Steg 1: Opprett hooks-mappen
 
 ```bash
-mkdir -p .github/copilot-hooks
+mkdir -p .github/hooks
 ```
 
 #### Steg 2: Lag hook-filen
 
-Opprett `.github/copilot-hooks/pre-commit.sh`:
+Opprett `.github/hooks/pre-commit`:
 
 ```bash
 #!/bin/bash
 echo "Running pre-commit checks..."
 
 # Check for console.log in TypeScript files
-if grep -r "console.log" frontend/src --include="*.ts" --include="*.tsx"; then
+if grep -r "console.log" frontend/src --include="*.ts" --include="*.tsx" 2>/dev/null; then
     echo "Warning: Found console.log statements!"
     exit 1
 fi
@@ -156,17 +160,19 @@ echo "All checks passed!"
 exit 0
 ```
 
-#### Steg 3: Gjør den kjørbar
+#### Steg 3: Gjør den kjørbar (Mac/Linux/Git Bash)
 
 ```bash
-chmod +x .github/copilot-hooks/pre-commit.sh
+chmod +x .github/hooks/pre-commit
 ```
 
 #### Steg 4: Test hooken
 
 ```bash
-./.github/copilot-hooks/pre-commit.sh
+./.github/hooks/pre-commit
 ```
+
+> **Tips:** Git kan konfigureres til å kjøre hooks automatisk med `git config core.hooksPath .github/hooks`
 
 ### Hva kan hooks gjøre?
 

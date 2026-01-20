@@ -105,4 +105,4 @@ Fjern kommentarene og gjenopprett instruksjonene før du går videre.
 
 ---
 
-**Neste:** [Nivå 2: Agents og Skills](02-agents-and-skills.md)
+**Neste:** [Nivå 2: Agents, Skills, Agent Mode og Hooks](02-agents-and-skills.md)

@@ -35,6 +35,7 @@ code .
 - [ ] VS Code med GitHub Copilot
 - [ ] .NET 9 SDK
 - [ ] Node.js 20+
+- [ ] Git (med Git Bash på Windows)
 
 ### 3. Start workshopen
 
@@ -69,7 +70,7 @@ dde-facts/
 │   ├── copilot-instructions.md     # Prosjekt-instruksjoner
 │   ├── agents/                     # Custom Agents
 │   ├── skills/                     # Agent Skills
-│   └── copilot-hooks/              # Hooks (lages i øvelse)
+│   └── hooks/                      # Git hooks (lages i øvelse)
 ├── backend/                        # Genereres i Del 0
 └── frontend/                       # Genereres i Del 0
 ```
