@@ -116,7 +116,9 @@ Hvis du har tid:
 
 ---
 
-## Når AI feiler (5 min)
+## Sikkerhet & beste praksis (5 min)
+
+### Når AI feiler
 
 Prøv denne prompten:
 
@@ -132,7 +134,16 @@ Prøv denne prompten:
 - Manglende feilhåndtering
 - Sikkerhetshull (SQL injection, XSS)
 
-**Regel:** Alltid verifiser AI-output før commit.
+### Beste praksis
+
+| Gjør | Ikke gjør |
+|------|-----------|
+| ✅ Review all generert kode | ❌ Blindt godta forslag |
+| ✅ Kjør tester etter endringer | ❌ Commit uten å teste |
+| ✅ Sjekk lisenser på biblioteker | ❌ Del sensitiv kode med AI |
+| ✅ Bruk instruksjoner for kontroll | ❌ Stol på sikkerhetskritisk kode |
+
+**Regel:** AI er en assistent, ikke en erstatning for code review.
 
 ---
 
@@ -150,11 +161,24 @@ Du har nå:
 
 ---
 
+## Lisenser & priser
+
+| Verktøy | Pris | Lisens |
+|---------|------|--------|
+| Copilot Individual | $10/mnd | Personlig bruk |
+| Copilot Business | $19/bruker/mnd | Bedrift, admin-kontroll |
+| Copilot Enterprise | $39/bruker/mnd | Org-tilpasning, knowledge bases |
+
+**Merk:** Generert kode har ingen egen lisens - du eier output.
+
+---
+
 ## Ressurser for videre læring
 
 - [GitHub Copilot Docs](https://docs.github.com/en/copilot)
 - [Custom Instructions](https://docs.github.com/en/copilot/customizing-copilot/adding-repository-custom-instructions-for-github-copilot)
 - [Copilot CLI](https://docs.github.com/en/copilot/using-github-copilot/using-github-copilot-in-the-command-line)
+- [Copilot Trust Center](https://resources.github.com/copilot-trust-center/)
 
 ---
 

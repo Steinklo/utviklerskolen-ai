@@ -4,13 +4,20 @@ I denne delen skal **du** la Copilot generere en hel fullstack-app. Jobb gjerne 
 
 ---
 
-## AI-verktøy i 2025 (5 min)
+## Grunnleggende KI & AI-verktøy (5 min)
 
-| Verktøy | Best til |
-|---------|----------|
-| GitHub Copilot | Inline-koding i IDE |
-| Claude Code / Cursor | Store endringer, refaktorering |
-| ChatGPT / Claude | Design, forklaring, planlegging |
+### Hvordan fungerer det?
+- **LLM** (Large Language Model) = trent på enorme mengder kode og tekst
+- Predikerer "mest sannsynlig neste ord/linje"
+- Forstår ikke koden - gjenkjenner mønstre
+
+### AI-verktøy i 2025
+
+| Verktøy | Best til | Pris |
+|---------|----------|------|
+| GitHub Copilot | Inline-koding i IDE | $10-19/mnd |
+| Claude Code / Cursor | Store endringer, refaktorering | $20/mnd |
+| ChatGPT / Claude | Design, forklaring, planlegging | Gratis-$20/mnd |
 
 **I dag:** Vi bruker Copilot, men prinsippene gjelder alle verktøy.
 
