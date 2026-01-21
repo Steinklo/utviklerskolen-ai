@@ -4,6 +4,18 @@ I denne delen skal **du** la Copilot generere en hel fullstack-app. Jobb gjerne 
 
 ---
 
+## AI-verktøy i 2025 (5 min)
+
+| Verktøy | Best til |
+|---------|----------|
+| GitHub Copilot | Inline-koding i IDE |
+| Claude Code / Cursor | Store endringer, refaktorering |
+| ChatGPT / Claude | Design, forklaring, planlegging |
+
+**I dag:** Vi bruker Copilot, men prinsippene gjelder alle verktøy.
+
+---
+
 ## Før du starter
 
 Sjekk at du har:
@@ -99,6 +111,17 @@ Diskuter med partneren din:
 1. **Hva skjedde?** Copilot leste instruksjonene og genererte kode som matcher.
 2. **Hva måtte du justere?** Kanskje noen imports eller CORS?
 3. **Hva betyr dette?** Gode instruksjoner = forutsigbar kode.
+
+---
+
+## Tidsmåling
+
+Noter ned:
+- Faktisk tid brukt: ___ min
+- Estimert tid uten AI: ___ min
+- Linjer kode generert: ___
+
+Del med gruppen!
 
 ---
 

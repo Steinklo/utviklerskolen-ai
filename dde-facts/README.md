@@ -1,6 +1,6 @@
-# GitHub Copilot Workshop
+# AI-assistert utvikling Workshop
 
-Lær å bruke GitHub Copilot til å bygge en hel app - fra instruksjoner til kjørende kode.
+Lær å bruke AI-verktøy til å bygge en hel app - fra instruksjoner til kjørende kode.
 
 **Prosjekt:** DDE-facts - morsomme fakta om bandet D.D.E.
 
@@ -10,13 +10,13 @@ Lær å bruke GitHub Copilot til å bygge en hel app - fra instruksjoner til kj�
 
 | Del | Tema | Tid | Hva du gjør |
 |-----|------|-----|-------------|
-| 0 | **Generer appen** | 15 min | Du genererer backend + frontend med Copilot |
+| 0 | **AI-landskapet + Generer appen** | 20 min | Oversikt over AI-verktøy, generer backend + frontend |
 | 1 | **Custom Instructions** | 20 min | Legg til regler, se effekten |
 | 2 | **Agents, Skills, Agent Mode, Hooks** | 30 min | Lag agenter, prøv agent mode, sett opp hooks |
 | 3 | **Copilot CLI** | 15 min | Bruk Copilot i terminalen |
-| 4 | **Utfordring** | 15 min | Restyle hele appen |
+| 4 | **Utfordring + Begrensninger** | 20 min | Restyle appen, lær å gjenkjenne AI-feil |
 
-**Total tid:** ca. 1 time 45 min
+**Total tid:** ca. 1 time 55 min
 
 ---
 
@@ -47,12 +47,12 @@ code .
 
 Etter workshopen kan du:
 
-1. Skrive instruksjoner som styrer Copilot
-2. Lage egne agenter for spesialiserte oppgaver
-3. Bruke Agent Mode for større endringer
-4. Sette opp hooks for automatisering
-5. Bruke Copilot CLI i terminalen
-6. Restyler en hel app ved å endre instruksjoner
+1. Velge riktig AI-verktøy for oppgaven
+2. Skrive effektive instruksjoner og prompts
+3. Gjenkjenne når AI feiler
+4. Lage egne agenter og skills
+5. Bruke AI i terminalen
+6. Integrere AI i daglig arbeidsflyt
 
 ---
 

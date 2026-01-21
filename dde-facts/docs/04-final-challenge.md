@@ -116,6 +116,26 @@ Hvis du har tid:
 
 ---
 
+## Når AI feiler (5 min)
+
+Prøv denne prompten:
+
+```
+@workspace Add authentication using the FakeAuthLib library
+```
+
+**Hva skjer?** Copilot hallusinerer - biblioteket finnes ikke.
+
+### Vanlige feil å se etter:
+- Ikke-eksisterende biblioteker
+- Utdaterte APIer
+- Manglende feilhåndtering
+- Sikkerhetshull (SQL injection, XSS)
+
+**Regel:** Alltid verifiser AI-output før commit.
+
+---
+
 ## Refleksjon
 
 Du har nå:
