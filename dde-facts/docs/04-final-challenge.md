@@ -138,12 +138,24 @@ Prøv denne prompten:
 
 | Gjør | Ikke gjør |
 |------|-----------|
-| ✅ Review all generert kode | ❌ Blindt godta forslag |
+| ✅ Gå gjennom all generert kode | ❌ Blindt godta forslag |
 | ✅ Kjør tester etter endringer | ❌ Commit uten å teste |
 | ✅ Sjekk lisenser på biblioteker | ❌ Del sensitiv kode med AI |
 | ✅ Bruk instruksjoner for kontroll | ❌ Stol på sikkerhetskritisk kode |
 
 **Regel:** AI er en assistent, ikke en erstatning for code review.
+
+---
+
+## Lisenser & priser
+
+| Plan | Pris | Målgruppe |
+|------|------|-----------|
+| Copilot Individual | $10/mnd | Personlig bruk |
+| Copilot Business | $19/bruker/mnd | Bedrift, admin-kontroll |
+| Copilot Enterprise | $39/bruker/mnd | Org-tilpasning, knowledge bases |
+
+**Merk:** Generert kode har ingen egen lisens - du eier output.
 
 ---
 
@@ -157,23 +169,11 @@ Du har nå:
 - Brukt CLI til å forstå og lage kommandoer
 - Restylet en hel frontend ved å endre instruksjoner
 
-**Hovedlærdom:** Copilot gjør det du sier. Jo bedre instruksjoner, jo bedre resultat.
+**Hovedlærdom:** AI gjør det du sier. Jo bedre instruksjoner, jo bedre resultat.
 
 ---
 
-## Lisenser & priser
-
-| Verktøy | Pris | Lisens |
-|---------|------|--------|
-| Copilot Individual | $10/mnd | Personlig bruk |
-| Copilot Business | $19/bruker/mnd | Bedrift, admin-kontroll |
-| Copilot Enterprise | $39/bruker/mnd | Org-tilpasning, knowledge bases |
-
-**Merk:** Generert kode har ingen egen lisens - du eier output.
-
----
-
-## Ressurser for videre læring
+## Ressurser
 
 - [GitHub Copilot Docs](https://docs.github.com/en/copilot)
 - [Custom Instructions](https://docs.github.com/en/copilot/customizing-copilot/adding-repository-custom-instructions-for-github-copilot)

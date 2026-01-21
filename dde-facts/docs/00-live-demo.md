@@ -11,13 +11,13 @@ I denne delen skal **du** la Copilot generere en hel fullstack-app. Jobb gjerne 
 - Predikerer "mest sannsynlig neste ord/linje"
 - Forstår ikke koden - gjenkjenner mønstre
 
-### AI-verktøy i 2025
+### AI-verktøy for utviklere
 
-| Verktøy | Best til | Pris |
-|---------|----------|------|
-| GitHub Copilot | Inline-koding i IDE | $10-19/mnd |
-| Claude Code / Cursor | Store endringer, refaktorering | $20/mnd |
-| ChatGPT / Claude | Design, forklaring, planlegging | Gratis-$20/mnd |
+| Verktøy | Best til |
+|---------|----------|
+| GitHub Copilot | Inline-koding i IDE |
+| Cursor / Claude Code | Store endringer, refaktorering |
+| ChatGPT / Claude.ai | Design, forklaring, planlegging |
 
 **I dag:** Vi bruker Copilot, men prinsippene gjelder alle verktøy.
 
