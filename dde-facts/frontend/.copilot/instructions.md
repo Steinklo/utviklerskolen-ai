@@ -1,4 +1,28 @@
-# Frontend Instructions (React + TypeScript + Vite)
+# Frontend-instruksjoner (React + TypeScript + Vite)
+
+## VIKTIG: Kjør disse kommandoene SELV!
+
+**Du MÅ kjøre disse kommandoene i terminalen - ikke bare vis dem!**
+
+### Steg 1: Initialiser Vite + React + TypeScript
+```bash
+npm create vite@latest . -- --template react-ts
+```
+
+### Steg 2: Installer dependencies
+```bash
+npm install
+npm install @tanstack/react-query
+```
+
+### Steg 3: Slett template-filer vi ikke trenger
+```bash
+rm src/App.css src/assets/react.svg
+```
+
+**⚠️ ALDRI slett `.copilot/`-mappen eller `instructions.md`-filer!**
+
+**Kjør ALLE kommandoene før du genererer kode!**
 
 ## Configuration
 
@@ -11,8 +35,6 @@ frontend/
 ├── index.html
 ├── package.json
 ├── vite.config.ts
-├── tailwind.config.js
-├── postcss.config.js
 ├── tsconfig.json
 └── src/
     ├── main.tsx
@@ -47,47 +69,173 @@ export default defineConfig({
 })
 ```
 
-## Required: tailwind.config.js
-```javascript
-/** @type {import('tailwindcss').Config} */
-export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
+## Required: index.html
+```html
+<!DOCTYPE html>
+<html lang="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <title>D.D.E. FAKTA</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+```
+
+---
+
+## Design System – Retro Terminal / CRT Aesthetic
+
+### Color Palette
+```css
+:root {
+  --bg-black: #000000;
+  --bg-dark: #001100;
+  --text-green: #00FF41;
+  --text-dim: #008800;
+  --text-bright: #00FF9F;
+  --text-critical: rgba(255, 51, 0, 0.8);
 }
 ```
 
-## Required: App.tsx with QueryClientProvider
+### Typography
+- **Font:** VT323 (Google Fonts) - authentic CRT terminal feel
+- **Body text:** 18-22px
+- **Titles:** 24-28px
+- **Letter-spacing:** 0.5-1px
+
+### Visual Effects
+- **Text glow:** `text-shadow: 0 0 4px #00ff41, 0 0 8px #00ff41`
+- **Scanlines:** Repeating gradient overlay
+- **Vignette:** Radial gradient dark edges
+
+### Design Constraints
+- ❌ No light mode (dark only)
+- ❌ No rounded corners
+- ❌ No gradients (except scanlines/vignette)
+- ✅ Green-on-black only
+- ✅ Monospace everything
+
+---
+
+## Required: src/index.css
+```css
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+:root {
+  --bg-black: #000000;
+  --bg-dark: #001100;
+  --text-green: #00FF41;
+  --text-dim: #008800;
+  --text-bright: #00FF9F;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'VT323', 'Courier New', monospace;
+  font-size: 20px;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+  background-color: var(--bg-black);
+  color: var(--text-green);
+  min-height: 100vh;
+}
+
+/* Scanline overlay */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    transparent 0px,
+    transparent 2px,
+    rgba(0, 0, 0, 0.3) 2px,
+    rgba(0, 0, 0, 0.3) 4px
+  );
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* Vignette effect */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 0%,
+    transparent 60%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+  pointer-events: none;
+  z-index: 999;
+}
+```
+
+## Required: App.tsx
 ```tsx
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { FactsList } from './pages/FactsList'
+import './index.css'
 
 const queryClient = new QueryClient()
 
 export function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="min-h-screen bg-gray-100 p-8">
-        <h1 className="mb-8 text-center text-3xl font-bold text-gray-800">
-          D.D.E. Fakta
-        </h1>
-        <FactsList />
+      <div className="container">
+        <header className="header">
+          <h1 className="title">D.D.E. FAKTA</h1>
+          <p className="subtitle">[ TRØNDERROCK DATABASE v1.0 ]</p>
+        </header>
+        <main>
+          <FactsList />
+        </main>
       </div>
     </QueryClientProvider>
   )
 }
 ```
 
-## Required: src/index.css
+Add to index.css:
 ```css
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.title {
+  font-size: 48px;
+  text-shadow: 0 0 10px #00ff41, 0 0 20px #00ff41;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  font-size: 18px;
+  color: var(--text-dim);
+  letter-spacing: 2px;
+}
 ```
 
 ## Types
@@ -107,9 +255,7 @@ export interface FactsResponse {
 }
 ```
 
-## Key Patterns
-
-### DO: React Query for Data
+## Required: useFacts hook
 ```typescript
 // src/hooks/useFacts.ts
 import { useQuery } from '@tanstack/react-query'
@@ -124,66 +270,159 @@ export function useFacts() {
 }
 ```
 
-### DON'T: useEffect for Fetching
-```typescript
-// Avoid
-useEffect(() => { fetch(...).then(setData) }, []);
-```
+## Required: FactCard component
+```tsx
+// src/components/FactCard.tsx
+import type { Fact } from '../types/dde'
+import './FactCard.css'
 
-### DO: Typed Components
-```typescript
 interface FactCardProps {
   fact: Fact;
-  onClick?: () => void;
 }
 
-export function FactCard({ fact, onClick }: FactCardProps) {
+export function FactCard({ fact }: FactCardProps) {
   return (
-    <article
-      className="cursor-pointer rounded-lg bg-white p-4 shadow-md hover:shadow-lg"
-      onClick={onClick}
-    >
-      <span className="rounded-full bg-blue-100 px-2 py-1 text-xs text-blue-800">
-        {fact.category}
-      </span>
-      <h3 className="mt-2 font-semibold">{fact.title}</h3>
-      <p className="mt-1 text-sm text-gray-600">{fact.description}</p>
-      <span className="mt-2 block text-xs text-gray-400">{fact.year}</span>
+    <article className="fact-card">
+      <div className="fact-header">
+        <span className="fact-category">{fact.category.toUpperCase()}</span>
+        <span className="fact-year">{fact.year}</span>
+      </div>
+      <h3 className="fact-title">&gt; {fact.title.toUpperCase()}</h3>
+      <p className="fact-description">{fact.description}</p>
     </article>
   );
 }
 ```
 
-### DO: Handle Loading/Error
-```typescript
+```css
+/* src/components/FactCard.css */
+.fact-card {
+  background-color: var(--bg-dark);
+  border: 1px solid var(--text-dim);
+  padding: 20px;
+  margin-bottom: 16px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.fact-card:hover {
+  border-color: var(--text-green);
+  box-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+}
+
+.fact-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.fact-category {
+  color: var(--text-bright);
+}
+
+.fact-year {
+  color: var(--text-dim);
+}
+
+.fact-title {
+  font-size: 24px;
+  margin-bottom: 12px;
+  text-shadow: 0 0 4px #00ff41;
+}
+
+.fact-description {
+  color: var(--text-dim);
+  font-size: 18px;
+}
+```
+
+## Required: FactsList page
+```tsx
+// src/pages/FactsList.tsx
+import { useFacts } from '../hooks/useFacts'
+import { FactCard } from '../components/FactCard'
+import './FactsList.css'
+
 export function FactsList() {
   const { data: facts, isLoading, error } = useFacts();
 
-  if (isLoading) return <div>Laster...</div>;
-  if (error) return <div>Feil ved lasting</div>;
+  if (isLoading) {
+    return <div className="status">&gt; LOADING DATA...</div>
+  }
+
+  if (error) {
+    return <div className="status error">&gt; ERROR: CONNECTION FAILED</div>
+  }
 
   return (
-    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="facts-grid">
       {facts?.map((fact) => <FactCard key={fact.id} fact={fact} />)}
     </div>
   );
 }
 ```
 
-## Styling
-- Use Tailwind utility classes
-- Responsive: `sm:`, `md:`, `lg:` prefixes
-- No inline styles or CSS modules
+```css
+/* src/pages/FactsList.css */
+.facts-grid {
+  display: grid;
+  gap: 16px;
+}
+
+@media (min-width: 768px) {
+  .facts-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.status {
+  text-align: center;
+  font-size: 24px;
+  animation: blink 1s step-end infinite;
+}
+
+.status.error {
+  color: rgba(255, 51, 0, 0.8);
+}
+
+@keyframes blink {
+  50% { opacity: 0.5; }
+}
+```
+
+---
+
+## Key Patterns
+
+### DO: React Query for Data
+```typescript
+const { data, isLoading, error } = useQuery({...})
+```
+
+### DON'T: useEffect for Fetching
+```typescript
+// Avoid
+useEffect(() => { fetch(...).then(setData) }, []);
+```
+
+### DO: Typed Props
+```typescript
+interface Props {
+  fact: Fact;
+}
+```
+
+---
 
 ## Naming
 - Components: `PascalCase.tsx`
 - Hooks: `useCamelCase.ts`
+- CSS: `ComponentName.css`
 - Types: `PascalCase`
 
 ## Running
 ```bash
 cd frontend
-npm install
 npm run dev
 # App available at http://localhost:5173
 ```

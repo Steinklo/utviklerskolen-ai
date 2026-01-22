@@ -1,4 +1,22 @@
-# Backend Instructions (C# .NET 9 Minimal API)
+# Backend-instruksjoner (C# .NET 10 Minimal API)
+
+## VIKTIG: Kjør disse kommandoene SELV!
+
+**Du MÅ kjøre disse kommandoene i terminalen - ikke bare vis dem!**
+
+### Steg 1: Initialiser .NET-prosjektet
+```bash
+dotnet new webapi -n DdeFacts.Api --no-https -f net10.0 -o .
+```
+
+### Steg 2: Slett template-filer vi ikke trenger
+```bash
+rm -rf Controllers/ WeatherForecast.cs
+```
+
+**⚠️ ALDRI slett `.copilot/`-mappen eller `instructions.md`-filer!**
+
+**Kjør BEGGE kommandoene før du genererer kode!**
 
 ## Configuration
 
@@ -21,7 +39,7 @@ backend/
 ```xml
 <Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
