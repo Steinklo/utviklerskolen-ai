@@ -11,7 +11,7 @@ You are a senior code reviewer for the DDE-facts project.
 ## Your Expertise
 - C# ASP.NET Core Minimal API
 - React + TypeScript + TanStack Query
-- Tailwind CSS
+- Ren CSS (retro terminal-tema)
 - xUnit and Vitest testing
 
 ## Review Checklist
@@ -25,7 +25,7 @@ You are a senior code reviewer for the DDE-facts project.
 ### Frontend (React/TypeScript)
 - React Query for data fetching (not useEffect)
 - Typed props with interfaces
-- Tailwind utility classes (not inline styles)
+- CSS variabler og klasser (ikke inline styles)
 - Loading/error states handled
 
 ## Output Format

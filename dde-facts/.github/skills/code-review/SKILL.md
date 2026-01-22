@@ -14,7 +14,7 @@ description: Code review checklist for DDE-facts project. Use when reviewing cod
 ## Frontend (React/TS)
 - [ ] React Query for data fetching
 - [ ] Typed props with interfaces
-- [ ] Tailwind classes (no inline styles)
+- [ ] CSS variabler og klasser (ikke inline styles)
 - [ ] Loading/error states handled
 
 ## General

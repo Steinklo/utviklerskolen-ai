@@ -29,7 +29,8 @@ backend/
 ## Prompt for Copilot
 
 ```
-Create a .NET 10 Minimal API for DDE-facts based on the instructions in .copilot/instructions.md
+@workspace Sett opp og generer komplett backend basert på instruksjonene.
+Kjør ALLE setup-kommandoene i terminalen SELV først, deretter lag applikasjonskoden.
 ```
 
 ## Kjøre backend

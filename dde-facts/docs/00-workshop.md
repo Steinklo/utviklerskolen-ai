@@ -136,7 +136,7 @@ Legg til nye fakta i tabellen:
 3. Skriv:
 
 ```
-Oppdater backend og frontend med den nye kategorien "Members" og de nye faktaene om bandmedlemmer fra copilot-instructions.md
+Oppdater backend og frontend med den nye kategorien "Members" og de nye faktaene om bandmedlemmer fra .github/copilot-instructions.md
 ```
 
 4. Se hvordan Copilot oppdaterer flere filer automatisk

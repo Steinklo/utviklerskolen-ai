@@ -29,13 +29,14 @@ frontend/
 │   │   └── FactCard.tsx     # Faktakort-komponent
 │   └── pages/
 │       └── FactsList.tsx    # Hovedside med liste
-└── tailwind.config.js
+└── index.css                # Retro terminal CSS
 ```
 
 ## Prompt for Copilot
 
 ```
-Create a React + TypeScript + Vite frontend for DDE-facts based on the instructions in .copilot/instructions.md
+@workspace Sett opp og generer komplett frontend basert på instruksjonene.
+Kjør ALLE setup-kommandoene i terminalen SELV først, deretter lag applikasjonskoden.
 ```
 
 ## Kjøre frontend
