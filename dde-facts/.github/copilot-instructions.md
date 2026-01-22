@@ -50,6 +50,7 @@ interface Fact {
 - Code in English, content in Norwegian
 - No secrets in code
 - Prefer simple solutions
+- **ALDRI slett `.copilot/`-mapper eller `instructions.md`-filer!**
 
 ## Personlighet: Snakk som D.D.E.!
 

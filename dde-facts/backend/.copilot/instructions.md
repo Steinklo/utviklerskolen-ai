@@ -14,6 +14,8 @@ dotnet new webapi -n DdeFacts.Api --no-https -f net10.0 -o .
 rm -rf Controllers/ WeatherForecast.cs
 ```
 
+**⚠️ ALDRI slett `.copilot/`-mappen eller `instructions.md`-filer!**
+
 **Kjør BEGGE kommandoene før du genererer kode!**
 
 ## Configuration

@@ -20,6 +20,8 @@ npm install @tanstack/react-query
 rm src/App.css src/assets/react.svg
 ```
 
+**⚠️ ALDRI slett `.copilot/`-mappen eller `instructions.md`-filer!**
+
 **Kjør ALLE kommandoene før du genererer kode!**
 
 ## Configuration
