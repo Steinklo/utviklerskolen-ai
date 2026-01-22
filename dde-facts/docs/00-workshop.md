@@ -12,7 +12,7 @@ Lær å bruke AI-verktøy til å bygge en komplett app med **kun instruksjonsfil
 |------|-----------|
 | 1 | **Demo**: Agent Mode og Instructions |
 | 2 | **Hands-on**: Generer backend + frontend |
-| 3 | **Oppgaver**: Modifiser koden |
+| 3 | **Oppgaver**: Skills, CLI og mer |
 
 ---
 
@@ -21,6 +21,7 @@ Lær å bruke AI-verktøy til å bygge en komplett app med **kun instruksjonsfil
 - VS Code med GitHub Copilot
 - .NET 10 SDK
 - Node.js 20+
+- GitHub CLI (`gh extension install github/gh-copilot`)
 
 ### Kom i gang
 
@@ -67,12 +68,12 @@ Kjør ALLE setup-kommandoene i terminalen SELV først, deretter lag applikasjons
 
 ## Fase 3: Oppgaver
 
-### Oppgave A: Legg til ny kategori
+### Oppgave A: Skills - Legg til fakta
 
-Be Copilot legge til bandmedlemmer:
+Bruk `@dde-expert` skill for å legge til bandmedlemmer:
 
 ```
-@workspace Legg til en ny kategori "Members" med fakta om Bjarne Brøndbo (vokalist) og Frode Viken (gitarist).
+@workspace Bruk @dde-expert skill til å legge til en ny kategori "Members" med fakta om bandmedlemmene.
 Oppdater instruksjonsfilen, backend og frontend.
 ```
 
@@ -80,31 +81,44 @@ Test: Restart backend og refresh frontend.
 
 ---
 
-### Oppgave B: Legg til filter
+### Oppgave B: CLI - Få hjelp i terminalen
 
-Først, forstå koden med **Ask Mode**:
+Bruk Copilot CLI for å få hjelp:
 
-```
-@workspace Hvordan fungerer FactsList-komponenten?
-```
-
-Deretter, bytt til **Agent Mode** og legg til filter:
-
-```
-Legg til filterknapper i FactsList som lar brukeren filtrere fakta per kategori.
+```bash
+gh copilot suggest "add search filter to react component"
 ```
 
-Test: Klikk på filterknappene.
-
----
-
-### Oppgave C: Legg til søk
+Deretter implementer med Agent Mode:
 
 ```
-Legg til et søkefelt i FactsList som filtrerer fakta på tittel og beskrivelse mens brukeren skriver.
+Legg til et søkefelt i FactsList som filtrerer fakta på tittel og beskrivelse.
 ```
 
 Test: Skriv i søkefeltet.
+
+---
+
+### Oppgave C: Agents - Code Review
+
+Bruk `@code-reviewer` agent for å sjekke koden:
+
+```
+@code-reviewer Gjør en code review av backend og frontend koden.
+```
+
+Se gjennom feedback og fiks eventuelle problemer.
+
+---
+
+## Bonus: Hooks
+
+Copilot støtter hooks for å kjøre kommandoer automatisk. Eksempel på pre-commit hook:
+
+```bash
+# .git/hooks/pre-commit
+gh copilot explain "$(git diff --staged)"
+```
 
 ---
 
@@ -114,7 +128,9 @@ Du har lært:
 
 1. **Instructions** - Styr hva Copilot genererer
 2. **Agent Mode** - La Copilot gjøre endringer på tvers av filer
-3. **Ask Mode** - Forstå eksisterende kode
+3. **Skills** - Gjenbrukbar ekspertkunnskap (@dde-expert)
+4. **CLI** - Få hjelp i terminalen (gh copilot suggest)
+5. **Agents** - Spesialiserte assistenter (@code-reviewer)
 
 **Hovedlærdom:** Jo bedre instruksjoner, jo bedre resultat!
 

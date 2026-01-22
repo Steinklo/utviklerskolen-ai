@@ -19,6 +19,7 @@ code .
 - VS Code med GitHub Copilot
 - .NET 10 SDK
 - Node.js 20+
+- GitHub CLI (`gh extension install github/gh-copilot`)
 
 ## Start workshopen
 
@@ -30,8 +31,8 @@ code .
 
 1. Generere en komplett app med én prompt
 2. Skrive effektive instruksjoner for Copilot
-3. Bruke Ask Mode for å forstå kode
-4. Bruke Agent Mode for større endringer
+3. Bruke Agent Mode, Skills og Agents
+4. Bruke Copilot CLI i terminalen
 
 ---
 
