@@ -229,8 +229,6 @@ cd frontend
 npm create vite@latest . -- --template react-ts
 npm install
 npm install @tanstack/react-query
-npm install -D tailwindcss postcss autoprefixer
-npx tailwindcss init -p
 ```
 
 ### Backend starter ikke
