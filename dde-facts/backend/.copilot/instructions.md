@@ -1,10 +1,10 @@
-# Backend Instructions (C# .NET 9 Minimal API)
+# Backend Instructions (C# .NET 10 Minimal API)
 
 ## Project Setup (run these commands first)
 
 1. Initialize .NET project:
    ```bash
-   dotnet new webapi -n DdeFacts.Api --no-https -f net9.0 -o .
+   dotnet new webapi -n DdeFacts.Api --no-https -f net10.0 -o .
    ```
 
 2. Remove template files we don't need:
@@ -33,7 +33,7 @@ backend/
 ```xml
 <Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>

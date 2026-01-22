@@ -76,7 +76,25 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        terminal: {
+          black: '#0a0a0f',
+          dark: '#1a1a2e',
+          green: '#39ff14',
+          cyan: '#00fff5',
+          magenta: '#ff00ff',
+          amber: '#ffb000',
+        }
+      },
+      fontFamily: {
+        mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
+      },
+      boxShadow: {
+        'neon-green': '0 0 5px #39ff14, 0 0 20px #39ff1450',
+        'neon-cyan': '0 0 5px #00fff5, 0 0 20px #00fff550',
+      }
+    },
   },
   plugins: [],
 }
@@ -92,10 +110,13 @@ const queryClient = new QueryClient()
 export function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="min-h-screen bg-gray-100 p-8">
-        <h1 className="mb-8 text-center text-3xl font-bold text-gray-800">
-          D.D.E. Fakta
+      <div className="min-h-screen bg-terminal-black p-8 font-mono">
+        <h1 className="mb-2 text-center text-4xl font-bold text-terminal-green drop-shadow-[0_0_10px_#39ff14]">
+          D.D.E. FAKTA
         </h1>
+        <p className="mb-8 text-center text-terminal-cyan text-sm tracking-widest">
+          [ TRØNDERROCK DATABASE v1.0 ]
+        </p>
         <FactsList />
       </div>
     </QueryClientProvider>
@@ -105,9 +126,17 @@ export function App() {
 
 ## Required: src/index.css
 ```css
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-terminal-black text-terminal-green;
+  }
+}
 ```
 
 ## Types
@@ -150,7 +179,7 @@ export function useFacts() {
 useEffect(() => { fetch(...).then(setData) }, []);
 ```
 
-### DO: Typed Components
+### DO: Typed Components (Synthwave Terminal Style)
 ```typescript
 interface FactCardProps {
   fact: Fact;
@@ -160,27 +189,38 @@ interface FactCardProps {
 export function FactCard({ fact, onClick }: FactCardProps) {
   return (
     <article
-      className="cursor-pointer rounded-lg bg-white p-4 shadow-md hover:shadow-lg"
+      className="cursor-pointer border border-terminal-green/30 bg-terminal-dark p-4
+                 hover:border-terminal-green hover:shadow-neon-green transition-all duration-300"
       onClick={onClick}
     >
-      <span className="rounded-full bg-blue-100 px-2 py-1 text-xs text-blue-800">
+      <span className="border border-terminal-cyan px-2 py-1 text-xs text-terminal-cyan uppercase tracking-wider">
         {fact.category}
       </span>
-      <h3 className="mt-2 font-semibold">{fact.title}</h3>
-      <p className="mt-1 text-sm text-gray-600">{fact.description}</p>
-      <span className="mt-2 block text-xs text-gray-400">{fact.year}</span>
+      <h3 className="mt-3 text-terminal-green font-bold">{fact.title}</h3>
+      <p className="mt-2 text-sm text-terminal-green/70">{fact.description}</p>
+      <span className="mt-3 block text-xs text-terminal-amber">
+        &gt; {fact.year}
+      </span>
     </article>
   );
 }
 ```
 
-### DO: Handle Loading/Error
+### DO: Handle Loading/Error (Terminal Style)
 ```typescript
 export function FactsList() {
   const { data: facts, isLoading, error } = useFacts();
 
-  if (isLoading) return <div>Laster...</div>;
-  if (error) return <div>Feil ved lasting</div>;
+  if (isLoading) return (
+    <div className="text-terminal-green animate-pulse text-center">
+      &gt; LOADING DATA...
+    </div>
+  );
+  if (error) return (
+    <div className="text-terminal-magenta text-center">
+      &gt; ERROR: CONNECTION FAILED
+    </div>
+  );
 
   return (
     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -190,10 +230,19 @@ export function FactsList() {
 }
 ```
 
-## Styling
+## Styling: Retro Terminal / 80s Synthwave Theme
+- **Theme:** Dark terminal with neon green text, cyan/magenta accents
+- **Font:** JetBrains Mono (monospace)
+- **Colors:**
+  - `terminal-black` (#0a0a0f) - Background
+  - `terminal-dark` (#1a1a2e) - Card background
+  - `terminal-green` (#39ff14) - Primary text, neon glow
+  - `terminal-cyan` (#00fff5) - Accents, categories
+  - `terminal-magenta` (#ff00ff) - Errors, highlights
+  - `terminal-amber` (#ffb000) - Secondary info (years)
+- **Effects:** Neon glow shadows, border transitions
 - Use Tailwind utility classes
 - Responsive: `sm:`, `md:`, `lg:` prefixes
-- No inline styles or CSS modules
 
 ## Naming
 - Components: `PascalCase.tsx`

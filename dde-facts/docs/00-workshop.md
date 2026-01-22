@@ -21,7 +21,7 @@ Lær å bruke AI-verktøy til å bygge en komplett app med **kun instruksjonsfil
 
 Sjekk at du har:
 - [ ] VS Code med GitHub Copilot
-- [ ] .NET 9 SDK
+- [ ] .NET 10 SDK
 - [ ] Node.js 20+
 - [ ] Git (med Git Bash på Windows)
 - [ ] GitHub Copilot CLI (`gh extension install github/gh-copilot`)
@@ -219,7 +219,7 @@ Legg til et søkefelt i FactsList som filtrerer fakta på tittel og beskrivelse 
 Hvis `dotnet run` feiler med "project not found":
 ```bash
 cd backend
-dotnet new webapi -n DdeFacts.Api --no-https -f net9.0 -o .
+dotnet new webapi -n DdeFacts.Api --no-https -f net10.0 -o .
 rm -rf Controllers/ WeatherForecast.cs
 ```
 

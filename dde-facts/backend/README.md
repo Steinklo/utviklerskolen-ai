@@ -29,7 +29,7 @@ backend/
 ## Prompt for Copilot
 
 ```
-Create a .NET 9 Minimal API for DDE-facts based on the instructions in .copilot/instructions.md
+Create a .NET 10 Minimal API for DDE-facts based on the instructions in .copilot/instructions.md
 ```
 
 ## Kjøre backend

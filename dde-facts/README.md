@@ -30,7 +30,7 @@ code .
 ### 2. Sjekk forutsetninger
 
 - [ ] VS Code med GitHub Copilot
-- [ ] .NET 9 SDK
+- [ ] .NET 10 SDK
 - [ ] Node.js 20+
 - [ ] Git (med Git Bash på Windows)
 
