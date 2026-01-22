@@ -1,18 +1,57 @@
 # Backend Instructions (C# .NET 9 Minimal API)
 
+## Configuration
+
+- **Port:** 5000
+- **CORS:** Allow `http://localhost:5173` (frontend dev server)
+
 ## Project Structure
 ```
-backend/src/DdeFacts.Api/
-├── Program.cs        # Entry + endpoints
-├── Models/           # Domain models
-├── DTOs/             # API responses (records)
-└── Services/         # Business logic
+backend/
+├── DdeFacts.Api.csproj
+├── Program.cs
+├── Models/
+│   └── Fact.cs
+└── Services/
+    ├── IFactService.cs
+    └── FactService.cs
 ```
 
-## Key Patterns
+## Required: DdeFacts.Api.csproj
+```xml
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+</Project>
+```
 
-### ✅ DO: Minimal API Endpoints
+## Required: Program.cs Template
 ```csharp
+var builder = WebApplication.CreateBuilder(args);
+
+// Add CORS
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.WithOrigins("http://localhost:5173")
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+
+// Add services
+builder.Services.AddScoped<IFactService, FactService>();
+
+var app = builder.Build();
+
+// Use CORS
+app.UseCors();
+
+// Endpoints
 app.MapGet("/api/facts", async (IFactService service) =>
     Results.Ok(new { facts = await service.GetAllAsync() }));
 
@@ -20,60 +59,39 @@ app.MapGet("/api/facts/{id:int}", async (int id, IFactService service) =>
     await service.GetByIdAsync(id) is { } fact
         ? Results.Ok(fact)
         : Results.NotFound());
+
+app.Run();
 ```
 
-### ❌ DON'T: Controllers
+## Key Patterns
+
+### DO: Records for DTOs
 ```csharp
-// Avoid - use Minimal API instead
-[ApiController]
-public class FactsController : ControllerBase { }
+public record Fact(int Id, string Title, string Description, int Year, string Category);
 ```
 
-### ✅ DO: Records for DTOs
-```csharp
-public record FactDto(int Id, string Title, string Description, int Year, string Category);
-```
-
-### ❌ DON'T: Mutable Classes
+### DON'T: Mutable Classes
 ```csharp
 // Avoid
-public class FactDto { public int Id { get; set; } }
+public class Fact { public int Id { get; set; } }
 ```
 
-### ✅ DO: Async + DI
+### DO: Async + DI
 ```csharp
 public interface IFactService
 {
-    Task<IEnumerable<FactDto>> GetAllAsync(CancellationToken ct = default);
+    Task<IEnumerable<Fact>> GetAllAsync(CancellationToken ct = default);
+    Task<Fact?> GetByIdAsync(int id, CancellationToken ct = default);
 }
 
 builder.Services.AddScoped<IFactService, FactService>();
 ```
 
-## Testing (xUnit)
-
+### DON'T: Controllers
 ```csharp
-public class FactServiceTests
-{
-    private readonly FactService _sut = new();
-
-    [Fact]
-    public async Task GetAllAsync_ReturnsAllFacts()
-    {
-        var result = await _sut.GetAllAsync();
-        result.Should().NotBeEmpty();
-    }
-
-    [Theory]
-    [InlineData(1)]
-    [InlineData(2)]
-    public async Task GetByIdAsync_WithValidId_ReturnsFact(int id)
-    {
-        var result = await _sut.GetByIdAsync(id);
-        result.Should().NotBeNull();
-        result!.Id.Should().Be(id);
-    }
-}
+// Avoid - use Minimal API instead
+[ApiController]
+public class FactsController : ControllerBase { }
 ```
 
 ## Naming
@@ -81,3 +99,10 @@ public class FactServiceTests
 - Interfaces: `IFactService`
 - Methods: `GetAllAsync`
 - Variables: `camelCase`
+
+## Running
+```bash
+cd backend
+dotnet run
+# API available at http://localhost:5000/api/facts
+```
