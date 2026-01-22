@@ -71,21 +71,15 @@ Test: Restart backend og refresh frontend.
 
 ---
 
-### Oppgave B: CLI - Få hjelp i terminalen
+### Oppgave B: CLI - Implementer med terminalen
 
-Bruk Copilot CLI for å få hjelp:
+Bruk Copilot CLI til å implementere søkefelt direkte fra terminalen:
 
 ```bash
-gh copilot suggest "add search filter to react component"
+gh copilot "Legg til et søkefelt i FactsList som filtrerer fakta på tittel og beskrivelse"
 ```
 
-Deretter implementer med Agent Mode:
-
-```
-Legg til et søkefelt i FactsList som filtrerer fakta på tittel og beskrivelse.
-```
-
-Test: Skriv i søkefeltet.
+Godta endringene og test: Skriv i søkefeltet.
 
 ---
 
