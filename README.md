@@ -6,16 +6,6 @@ Lær å bruke AI-verktøy til å bygge en komplett app med **kun instruksjonsfil
 
 ---
 
-## Workshop-oversikt
-
-| Fase | Aktivitet |
-|------|-----------|
-| 1 | **Demo**: Agent Mode og Instructions |
-| 2 | **Hands-on**: Generer backend + frontend |
-| 3 | **Oppgaver**: Skills, CLI og mer |
-
----
-
 ## Forutsetninger
 
 - VS Code med GitHub Copilot
@@ -33,16 +23,7 @@ code .
 
 ---
 
-## Fase 1: Demo
-
-Presenter viser:
-- Hvordan Agent Mode fungerer
-- Hvordan instruksjonsfiler styrer Copilot
-- D.D.E.-personligheten i aksjon
-
----
-
-## Fase 2: Generer appen
+## Generer appen
 
 ### Backend
 
@@ -75,7 +56,7 @@ Kjør ALLE setup-kommandoene i terminalen SELV først, deretter lag applikasjons
 
 ---
 
-## Fase 3: Oppgaver
+## Oppgaver
 
 ### Oppgave A: Skills - Legg til fakta
 
