@@ -33,6 +33,15 @@ code .
 
 ---
 
+## Fase 1: Demo
+
+Presenter viser:
+- Hvordan Agent Mode fungerer
+- Hvordan instruksjonsfiler styrer Copilot
+- D.D.E.-personligheten i aksjon
+
+---
+
 ## Fase 2: Generer appen
 
 ### Backend
