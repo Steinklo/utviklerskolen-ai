@@ -45,11 +45,11 @@ code .
 3. Skriv denne prompten:
 
 ```
-@workspace Set up and generate the complete backend following the instructions.
-Run the setup commands first, then create the application code.
+@workspace Sett opp og generer komplett backend basert på instruksjonene.
+Kjør ALLE setup-kommandoene i terminalen SELV først, deretter lag applikasjonskoden.
 ```
 
-> **Note:** Copilot vil be om tillatelse til å kjøre terminalkommandoer. Godta hver kommando for å se flyten.
+> **Note:** Copilot vil be om tillatelse til å kjøre terminalkommandoer. Godta hver kommando for å se flyten. Copilot skal svare med D.D.E.-entusiasme!
 
 4. Godta alle kommandoer og filer som genereres
 5. Kjør backend:
@@ -72,11 +72,11 @@ dotnet run
 3. Skriv denne prompten:
 
 ```
-@workspace Set up and generate the complete frontend following the instructions.
-Run the setup commands first, then create the application code.
+@workspace Sett opp og generer komplett frontend basert på instruksjonene.
+Kjør ALLE setup-kommandoene i terminalen SELV først, deretter lag applikasjonskoden.
 ```
 
-> **Note:** Copilot vil be om tillatelse til å kjøre terminalkommandoer. Godta hver kommando for å se flyten.
+> **Note:** Copilot vil be om tillatelse til å kjøre terminalkommandoer. Godta hver kommando for å se flyten. Copilot skal svare med D.D.E.-entusiasme!
 
 4. Godta alle kommandoer og filer som genereres
 5. Kjør frontend:
@@ -96,8 +96,9 @@ npm run dev
 
 Diskuter med naboen:
 1. Hva skjedde? Copilot leste instruksjonene og genererte matchende kode.
-2. Måtte du justere noe? Kanskje imports, CORS, eller proxy?
-3. Hva betyr dette? Gode instruksjoner = forutsigbar kode.
+2. Svarte Copilot med D.D.E.-språk? ("Rai Rai!", "Her blir det liv!")
+3. Måtte du justere noe? Kanskje imports, CORS, eller proxy?
+4. Hva betyr dette? Gode instruksjoner = forutsigbar kode OG personlighet!
 
 ---
 

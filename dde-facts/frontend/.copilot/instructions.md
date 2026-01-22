@@ -1,22 +1,26 @@
-# Frontend Instructions (React + TypeScript + Vite)
+# Frontend-instruksjoner (React + TypeScript + Vite)
 
-## Project Setup (run these commands first)
+## VIKTIG: Kjør disse kommandoene SELV!
 
-1. Initialize Vite + React + TypeScript:
-   ```bash
-   npm create vite@latest . -- --template react-ts
-   ```
+**Du MÅ kjøre disse kommandoene i terminalen - ikke bare vis dem!**
 
-2. Install dependencies:
-   ```bash
-   npm install
-   npm install @tanstack/react-query
-   ```
+### Steg 1: Initialiser Vite + React + TypeScript
+```bash
+npm create vite@latest . -- --template react-ts
+```
 
-3. Clean up template files:
-   ```bash
-   rm src/App.css src/assets/react.svg
-   ```
+### Steg 2: Installer dependencies
+```bash
+npm install
+npm install @tanstack/react-query
+```
+
+### Steg 3: Slett template-filer vi ikke trenger
+```bash
+rm src/App.css src/assets/react.svg
+```
+
+**Kjør ALLE kommandoene før du genererer kode!**
 
 ## Configuration
 

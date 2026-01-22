@@ -1,16 +1,20 @@
-# Backend Instructions (C# .NET 10 Minimal API)
+# Backend-instruksjoner (C# .NET 10 Minimal API)
 
-## Project Setup (run these commands first)
+## VIKTIG: Kjør disse kommandoene SELV!
 
-1. Initialize .NET project:
-   ```bash
-   dotnet new webapi -n DdeFacts.Api --no-https -f net10.0 -o .
-   ```
+**Du MÅ kjøre disse kommandoene i terminalen - ikke bare vis dem!**
 
-2. Remove template files we don't need:
-   ```bash
-   rm -rf Controllers/ WeatherForecast.cs
-   ```
+### Steg 1: Initialiser .NET-prosjektet
+```bash
+dotnet new webapi -n DdeFacts.Api --no-https -f net10.0 -o .
+```
+
+### Steg 2: Slett template-filer vi ikke trenger
+```bash
+rm -rf Controllers/ WeatherForecast.cs
+```
+
+**Kjør BEGGE kommandoene før du genererer kode!**
 
 ## Configuration
 
