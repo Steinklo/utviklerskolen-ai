@@ -4,7 +4,12 @@ Denne mappen er tom - med vilje!
 
 ## Live Demo
 
-Under workshopen vil vi bruke GitHub Copilot til å generere hele frontend-en basert på instruksjonene i `.copilot/instructions.md`.
+Copilot Agent vil:
+1. Kjøre init-kommandoer for å sette opp prosjektet
+2. Generere all forretningslogikk
+3. Konfigurere nødvendige filer
+
+Alt fra én prompt!
 
 ## Hva Copilot skal lage
 

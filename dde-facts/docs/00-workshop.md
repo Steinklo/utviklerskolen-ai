@@ -41,14 +41,18 @@ code .
 ### Steg 1: Generer Backend (15 min)
 
 1. Åpne Copilot Chat (`Ctrl+Shift+I` / `Cmd+Shift+I`)
-2. Skriv denne prompten:
+2. Bytt til **Agent Mode** (dropdown ved "Ask")
+3. Skriv denne prompten:
 
 ```
-@workspace /new Generate the complete backend following the instructions
+@workspace Set up and generate the complete backend following the instructions.
+Run the setup commands first, then create the application code.
 ```
 
-3. Godta alle filene som genereres
-4. Kjør backend:
+> **Note:** Copilot vil be om tillatelse til å kjøre terminalkommandoer. Godta hver kommando for å se flyten.
+
+4. Godta alle kommandoer og filer som genereres
+5. Kjør backend:
 
 ```bash
 cd backend
@@ -64,18 +68,21 @@ dotnet run
 ### Steg 2: Generer Frontend (15 min)
 
 1. Åpne ny Copilot Chat
-2. Skriv denne prompten:
+2. Bytt til **Agent Mode** (dropdown ved "Ask")
+3. Skriv denne prompten:
 
 ```
-@workspace /new Generate the complete frontend following the instructions
+@workspace Set up and generate the complete frontend following the instructions.
+Run the setup commands first, then create the application code.
 ```
 
-3. Godta alle filene som genereres
-4. Installer og kjør:
+> **Note:** Copilot vil be om tillatelse til å kjøre terminalkommandoer. Godta hver kommando for å se flyten.
+
+4. Godta alle kommandoer og filer som genereres
+5. Kjør frontend:
 
 ```bash
 cd frontend
-npm install
 npm run dev
 ```
 
@@ -206,6 +213,25 @@ Legg til et søkefelt i FactsList som filtrerer fakta på tittel og beskrivelse 
 ---
 
 ## Troubleshooting
+
+### Copilot kjørte ikke init-kommandoer
+
+Hvis `dotnet run` feiler med "project not found":
+```bash
+cd backend
+dotnet new webapi -n DdeFacts.Api --no-https -f net9.0 -o .
+rm -rf Controllers/ WeatherForecast.cs
+```
+
+Hvis `npm run dev` feiler med "missing package.json":
+```bash
+cd frontend
+npm create vite@latest . -- --template react-ts
+npm install
+npm install @tanstack/react-query
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+```
 
 ### Backend starter ikke
 

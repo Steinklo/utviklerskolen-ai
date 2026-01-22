@@ -1,5 +1,17 @@
 # Backend Instructions (C# .NET 9 Minimal API)
 
+## Project Setup (run these commands first)
+
+1. Initialize .NET project:
+   ```bash
+   dotnet new webapi -n DdeFacts.Api --no-https -f net9.0 -o .
+   ```
+
+2. Remove template files we don't need:
+   ```bash
+   rm -rf Controllers/ WeatherForecast.cs
+   ```
+
 ## Configuration
 
 - **Port:** 5000

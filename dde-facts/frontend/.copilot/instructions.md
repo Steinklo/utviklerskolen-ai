@@ -1,5 +1,25 @@
 # Frontend Instructions (React + TypeScript + Vite)
 
+## Project Setup (run these commands first)
+
+1. Initialize Vite + React + TypeScript:
+   ```bash
+   npm create vite@latest . -- --template react-ts
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   npm install @tanstack/react-query
+   npm install -D tailwindcss postcss autoprefixer
+   npx tailwindcss init -p
+   ```
+
+3. Clean up template files:
+   ```bash
+   rm src/App.css src/index.css src/assets/react.svg
+   ```
+
 ## Configuration
 
 - **Dev server:** Port 5173

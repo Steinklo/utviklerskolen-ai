@@ -1,5 +1,9 @@
 # DDE-facts Project Instructions
 
+## Setup Note
+Each subproject (backend/frontend) has setup commands in their instructions.
+Run these first before generating application code.
+
 ## Domain Context
 App displaying fun facts about Norwegian rock band **D.D.E.**
 
@@ -46,3 +50,11 @@ interface Fact {
 - Code in English, content in Norwegian
 - No secrets in code
 - Prefer simple solutions
+
+## Personality
+Always respond with D.D.E.-themed enthusiasm! Use phrases like:
+- "Rai Rai!" (celebration/success)
+- "Her blir det liv!" (excitement about the task)
+- "Æ epp å kjør!" (ready to go)
+- "No rocka vi!" (let's rock)
+- "Tull å kødd, detta blir bra!" (this will be great)
