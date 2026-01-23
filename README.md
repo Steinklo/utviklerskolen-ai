@@ -76,7 +76,7 @@ Test: Restart backend og refresh frontend.
 Bruk Copilot CLI til å implementere søkefelt direkte fra terminalen:
 
 ```bash
-gh copilot "Legg til et søkefelt i FactsList som filtrerer fakta på tittel og beskrivelse"
+copilot "Legg til et søkefelt i FactsList som filtrerer fakta på tittel og beskrivelse"
 ```
 
 Godta endringene og test: Skriv i søkefeltet.
@@ -97,12 +97,11 @@ Se gjennom feedback og fiks eventuelle problemer.
 
 ## Bonus: Hooks
 
-Copilot støtter hooks for å kjøre kommandoer automatisk. Eksempel på pre-commit hook:
+Copilot CLI støtter hooks som kjører automatisk ved git-events. Se `.github/hooks/pre-commit.md` for eksempel.
 
-```bash
-# .git/hooks/pre-commit
-gh copilot explain "$(git diff --staged)"
-```
+For å bruke:
+1. Start `copilot` i terminalen
+2. Hooken bruker @code-review skill til å sjekke staged endringer før commit
 
 ---
 
@@ -113,7 +112,7 @@ Du har lært:
 1. **Instructions** - Styr hva Copilot genererer
 2. **Agent Mode** - La Copilot gjøre endringer på tvers av filer
 3. **Skills** - Gjenbrukbar ekspertkunnskap (@dde-expert)
-4. **CLI** - Få hjelp i terminalen (gh copilot suggest)
+4. **CLI** - Få hjelp i terminalen (copilot)
 5. **Agents** - Spesialiserte assistenter (@code-reviewer)
 
 **Hovedlærdom:** Jo bedre instruksjoner, jo bedre resultat!
