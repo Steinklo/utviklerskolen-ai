@@ -11,7 +11,7 @@ Lær å bruke AI-verktøy til å bygge en komplett app med **kun instruksjonsfil
 - VS Code med GitHub Copilot
 - .NET 10 SDK
 - Node.js 20+
-- GitHub CLI (`gh extension install github/gh-copilot`)
+- Copilot CLI (`copilot` i terminalen)
 
 ### Kom i gang
 
@@ -71,38 +71,71 @@ Test: Restart backend og refresh frontend.
 
 ---
 
-### Oppgave B: CLI - Implementer med terminalen
+### Oppgave B: CLI - Søkefelt
 
-Bruk Copilot CLI til å implementere søkefelt direkte fra terminalen:
+Start Copilot CLI og legg til søkefunksjonalitet:
 
 ```bash
-gh copilot "Legg til et søkefelt i FactsList som filtrerer fakta på tittel og beskrivelse"
+copilot
 ```
 
-Godta endringene og test: Skriv i søkefeltet.
+Skriv i chatten:
+```
+Legg til et søkefelt i FactsList som filtrerer fakta på tittel og beskrivelse
+```
+
+Test: Skriv i søkefeltet og se at fakta filtreres.
 
 ---
 
-### Oppgave C: Agents - Code Review
+### Oppgave C: CLI - Favoritter
 
-Bruk `@code-reviewer` agent for å sjekke koden:
+Legg til mulighet for å markere favoritter:
 
+```bash
+copilot
 ```
-@code-reviewer Gjør en code review av backend og frontend koden.
+
+Skriv i chatten:
+```
+Legg til en favoritt-knapp på hver fact-card. Bruk localStorage for å lagre favoritter. Vis en stjerne-ikon som toggle.
 ```
 
-Se gjennom feedback og fiks eventuelle problemer.
+Test: Klikk på stjerna og refresh - favorittene skal huskes.
 
 ---
 
-## Bonus: Hooks
+### Oppgave D: CLI - Animasjoner
 
-Copilot støtter hooks for å kjøre kommandoer automatisk. Eksempel på pre-commit hook:
+Legg til retro terminal-animasjoner:
 
 ```bash
-# .git/hooks/pre-commit
-gh copilot explain "$(git diff --staged)"
+copilot
 ```
+
+Skriv i chatten:
+```
+Legg til en typewriter-effekt når fakta vises første gang. Bruk CSS animations, ikke JavaScript.
+```
+
+Test: Refresh siden og se teksten "skrives ut".
+
+---
+
+### Oppgave E: CLI - Random fact
+
+Legg til en knapp som viser tilfeldig fakta:
+
+```bash
+copilot
+```
+
+Skriv i chatten:
+```
+Legg til en "Tilfeldig fakta"-knapp som viser én random fact i en modal med retro terminal-stil
+```
+
+Test: Klikk på knappen og se en tilfeldig fakta.
 
 ---
 
@@ -113,8 +146,7 @@ Du har lært:
 1. **Instructions** - Styr hva Copilot genererer
 2. **Agent Mode** - La Copilot gjøre endringer på tvers av filer
 3. **Skills** - Gjenbrukbar ekspertkunnskap (@dde-expert)
-4. **CLI** - Få hjelp i terminalen (gh copilot suggest)
-5. **Agents** - Spesialiserte assistenter (@code-reviewer)
+4. **CLI** - Implementer features via terminalen (copilot)
 
 **Hovedlærdom:** Jo bedre instruksjoner, jo bedre resultat!
 
