@@ -95,13 +95,20 @@ Se gjennom feedback og fiks eventuelle problemer.
 
 ---
 
-## Bonus: Hooks
+## Bonus: Code Review
 
-Copilot CLI støtter hooks som kjører automatisk ved git-events. Se `.github/hooks/pre-commit.md` for eksempel.
+Bruk code review før commit - enten med agent eller CLI.
 
-For å bruke:
-1. Start `copilot` i terminalen
-2. Hooken bruker @code-review skill til å sjekke staged endringer før commit
+**Agent (VS Code):**
+```
+@code-reviewer Sjekk staged endringer
+```
+
+**CLI (Terminal):**
+```bash
+copilot
+# Be om code review basert på .github/skills/code-review/SKILL.md
+```
 
 ---
 
