@@ -60,11 +60,11 @@ Kjør ALLE setup-kommandoene i terminalen SELV først, deretter lag applikasjons
 
 ### Oppgave A: Skills - Legg til fakta
 
-Bruk `@dde-expert` skill for å legge til bandmedlemmer:
+Bruk `dde-expert` skill for å legge til bandmedlemmer:
 
 ```
-@workspace Bruk @dde-expert skill til å legge til en ny kategori "Members" med fakta om bandmedlemmene.
-Oppdater instruksjonsfilen, backend og frontend.
+@workspace Les .github/skills/dde-expert/SKILL.md og bruk informasjonen til å legge til en ny kategori "Members" med fakta om bandmedlemmene.
+Oppdater data contract i copilot-instructions.md, backend og frontend.
 ```
 
 Test: Restart backend og refresh frontend.
@@ -145,7 +145,7 @@ Du har lært:
 
 1. **Instructions** - Styr hva Copilot genererer
 2. **Agent Mode** - La Copilot gjøre endringer på tvers av filer
-3. **Skills** - Gjenbrukbar ekspertkunnskap (@dde-expert)
+3. **Skills** - Gjenbrukbar ekspertkunnskap (dde-expert)
 4. **CLI** - Implementer features via terminalen (copilot)
 
 **Hovedlærdom:** Jo bedre instruksjoner, jo bedre resultat!

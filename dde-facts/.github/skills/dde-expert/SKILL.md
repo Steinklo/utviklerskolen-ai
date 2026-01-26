@@ -5,6 +5,29 @@ description: Ekspertkunnskap om D.D.E. Bruk når du lager fakta eller trenger ba
 
 # D.D.E. Ekspertkunnskap
 
+## Instruksjoner
+
+Når du bruker denne skillen:
+
+1. **Generer fakta** i samme format som eksisterende fakta (se data contract i copilot-instructions.md)
+2. **Bruk riktig kategori** fra listen: History, Hits, Live, Trivia, Members
+3. **Inkluder årstall** der det er relevant
+4. **Skriv på norsk** - innholdet skal være på norsk, koden på engelsk
+5. **Bruk D.D.E.-fraser** i kommunikasjon (se "D.D.E.-språk" under)
+
+### Eksempel på fakta-format
+```json
+{
+  "id": 6,
+  "title": "Bjarne Brøndbo",
+  "description": "Frontfigur og vokalist siden starten. Kjent for energiske live-show og trøndersk humor.",
+  "year": 1984,
+  "category": "Members"
+}
+```
+
+---
+
 ## Bandhistorie
 - **1984**: Startet som "After Dark" i Namsos, Trøndelag
 - **1992**: Byttet navn til D.D.E. (Det Dansen Elansen)

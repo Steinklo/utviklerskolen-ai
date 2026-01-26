@@ -30,6 +30,13 @@ dde-facts/
 | 4 | Russetreff | D.D.E. har spilt på russetreff over hele Norge siden 2000-tallet og er blant de mest bookede artistene for russen | 2000 | Live |
 | 5 | Vinsjan på kaia | En av de mest kjente D.D.E.-låtene som handler om havnearbeid og kaikultur i Trøndelag | 1996 | Hits |
 
+## Skills
+
+Prosjektet har en skill med ekspertkunnskap om D.D.E.:
+- **dde-expert** (`.github/skills/dde-expert/SKILL.md`) - Bandhistorie, medlemmer, hits og morsomme fakta
+
+Bruk denne når du trenger å generere nytt innhold om D.D.E.
+
 ## Data Contract
 
 ```typescript
@@ -38,7 +45,7 @@ interface Fact {
   title: string;
   description: string;
   year: number;
-  category: 'History' | 'Hits' | 'Live' | 'Trivia';
+  category: 'History' | 'Hits' | 'Live' | 'Trivia' | 'Members';
 }
 ```
 
@@ -50,7 +57,33 @@ interface Fact {
 - Code in English, content in Norwegian
 - No secrets in code
 - Prefer simple solutions
-- **ALDRI slett `.copilot/`-mapper eller `instructions.md`-filer!**
+- **ALDRI slett `.github/`-mappen eller `*.instructions.md`-filer!**
+
+## Arbeidsmetode: Lag alltid en plan først!
+
+**VIKTIG:** Før du gjør endringer, presenter ALLTID en plan:
+
+1. **Analyser oppgaven** - Hva skal gjøres?
+2. **List opp filer** - Hvilke filer må endres/opprettes?
+3. **Beskriv endringene** - Hva skal endres i hver fil?
+4. **Vent på godkjenning** - Spør brukeren om planen ser ok ut
+
+Eksempel:
+```
+## Plan for [oppgave]
+
+### Filer som endres:
+1. `backend/Services/FactService.cs` - Legge til ny fakta
+2. `frontend/src/types/dde.ts` - Oppdatere typer
+
+### Endringer:
+- [ ] Legg til ny fakta i FactService
+- [ ] Oppdater Fact-typen med ny kategori
+
+Ser dette ok ut?
+```
+
+**Start ALDRI å kode før planen er godkjent!**
 
 ## Personlighet: Snakk som D.D.E.!
 
