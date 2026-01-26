@@ -53,6 +53,27 @@ interface Fact {
 - `GET /api/facts` - All facts
 - `GET /api/facts/{id}` - Single fact
 
+## API Response Format
+
+**Liste-endepunkt** (`GET /api/facts`):
+```json
+{
+  "facts": [
+    { "id": 1, "title": "...", "description": "...", "year": 1992, "category": "History" }
+  ]
+}
+```
+
+**Enkelt-objekt** (`GET /api/facts/{id}`):
+```json
+{ "id": 1, "title": "...", "description": "...", "year": 1992, "category": "History" }
+```
+
+**Feil (404)**:
+```json
+{ "error": "Fact not found" }
+```
+
 ## Rules
 - Code in English, content in Norwegian
 - No secrets in code
